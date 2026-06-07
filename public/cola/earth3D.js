@@ -117,9 +117,14 @@ document.addEventListener("DOMContentLoaded", () => {
         paused: true,
         onComplete: () => {
             document.body.style.overflow = '';
+            if (window.lenis) window.lenis.start();
             const nextSection = document.getElementById('flavours');
             if (nextSection) {
-                nextSection.scrollIntoView({ behavior: 'smooth' });
+                if (window.lenis) {
+                    window.lenis.scrollTo(nextSection, { duration: 1.5 });
+                } else {
+                    nextSection.scrollIntoView({ behavior: 'smooth' });
+                }
             }
         }
     });
@@ -128,6 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
         trigger: ".living-earth-section",
         start: "top top",
         onEnter: () => {
+            if (window.lenis) window.lenis.stop();
             document.body.style.overflow = 'hidden';
             tl.play();
         },

@@ -98,12 +98,10 @@ window.addEventListener('scroll', handleScroll, { passive: true });
 window.addEventListener('resize', handleScroll);
 
 /* --- GLOBAL LOADER --- */
-window.addEventListener('load', () => {
+const removeLoader = () => {
     const loader = document.getElementById('global-loader');
     const progressBar = document.getElementById('loader-progress');
-    
-    if (progressBar && loader) {
-        // Fake progress to ensure 3D is compiled
+    if (progressBar && loader && !loader.classList.contains('hidden')) {
         let progress = 0;
         const interval = setInterval(() => {
             progress += Math.random() * 15;
@@ -111,11 +109,8 @@ window.addEventListener('load', () => {
                 progress = 100;
                 clearInterval(interval);
                 progressBar.style.width = '100%';
-                
-                // Fade out loader
                 setTimeout(() => {
                     loader.classList.add('hidden');
-                    // Allow scroll again if we were blocking it
                     document.body.style.overflow = '';
                 }, 500);
             } else {
@@ -123,7 +118,11 @@ window.addEventListener('load', () => {
             }
         }, 100);
     }
-});
+};
+
+window.addEventListener('load', removeLoader);
+// Failsafe in case load event never fires
+setTimeout(removeLoader, 3000);
 
 /* --- GSAP ANIMATIONS & LENIS --- */
 // Make sure GSAP is loaded before executing
@@ -131,7 +130,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
     // Initialize Lenis Smooth Scrolling
-    const lenis = new Lenis({
+    window.lenis = new Lenis({
         duration: 1.2,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
         direction: 'vertical',
@@ -144,10 +143,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
     });
 
     // Link Lenis to GSAP ScrollTrigger
-    lenis.on('scroll', ScrollTrigger.update);
+    window.lenis.on('scroll', ScrollTrigger.update);
 
     gsap.ticker.add((time) => {
-        lenis.raf(time * 1000);
+        window.lenis.raf(time * 1000);
     });
 
     gsap.ticker.lagSmoothing(0);

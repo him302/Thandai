@@ -260,10 +260,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 /* --- GLOBAL LOADER --- */
-window.addEventListener('load', () => {
+const removeLoader = () => {
     const loader = document.getElementById('global-loader');
     const progressBar = document.getElementById('loader-progress');
-    if (progressBar && loader) {
+    if (progressBar && loader && !loader.classList.contains('hidden')) {
         let progress = 0;
         const interval = setInterval(() => {
             progress += Math.random() * 15;
@@ -277,19 +277,21 @@ window.addEventListener('load', () => {
             }
         }, 100);
     }
-});
+};
+window.addEventListener('load', removeLoader);
+setTimeout(removeLoader, 3000);
 
 /* --- GSAP ANIMATIONS & LENIS --- */
 document.addEventListener("DOMContentLoaded", () => {
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
         gsap.registerPlugin(ScrollTrigger);
         if (typeof Lenis !== 'undefined') {
-            const lenis = new Lenis({
+            window.lenis = new Lenis({
                 duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
                 direction: 'vertical', smooth: true
             });
-            lenis.on('scroll', ScrollTrigger.update);
-            gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+            window.lenis.on('scroll', ScrollTrigger.update);
+            gsap.ticker.add((time) => { window.lenis.raf(time * 1000); });
             gsap.ticker.lagSmoothing(0);
         }
         
