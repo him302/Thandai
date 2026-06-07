@@ -257,3 +257,45 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 });
+
+
+/* --- GLOBAL LOADER --- */
+window.addEventListener('load', () => {
+    const loader = document.getElementById('global-loader');
+    const progressBar = document.getElementById('loader-progress');
+    if (progressBar && loader) {
+        let progress = 0;
+        const interval = setInterval(() => {
+            progress += Math.random() * 15;
+            if (progress >= 100) {
+                progress = 100;
+                clearInterval(interval);
+                progressBar.style.width = '100%';
+                setTimeout(() => { loader.classList.add('hidden'); document.body.style.overflow = ''; }, 500);
+            } else {
+                progressBar.style.width = progress + '%';
+            }
+        }, 100);
+    }
+});
+
+/* --- GSAP ANIMATIONS & LENIS --- */
+document.addEventListener("DOMContentLoaded", () => {
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+        if (typeof Lenis !== 'undefined') {
+            const lenis = new Lenis({
+                duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                direction: 'vertical', smooth: true
+            });
+            lenis.on('scroll', ScrollTrigger.update);
+            gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+            gsap.ticker.lagSmoothing(0);
+        }
+        
+        const fadeElements = document.querySelectorAll('.fade-up');
+        fadeElements.forEach((el) => {
+            ScrollTrigger.create({ trigger: el, start: "top 85%", onEnter: () => el.classList.add('visible'), once: true });
+        });
+    }
+});

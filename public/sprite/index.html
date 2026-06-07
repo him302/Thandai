@@ -7,10 +7,22 @@
     <title>Sprite - Obey Your Thirst</title>
     <!-- Use Inter font for premium feel -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
     <script type="module" crossorigin src="./assets/sprite-app.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/sprite-style.css?v=2">
   </head>
   <body>
+
+    <!-- Premium Loading Screen -->
+    <div id="global-loader">
+        <div class="loader-content">
+            <div class="loader-logo">Sprite</div>
+            <div class="loader-bar-container">
+                <div class="loader-bar" id="loader-progress"></div>
+            </div>
+            <p class="loader-text">Loading the Multiverse...</p>
+        </div>
+    </div>
     <div id="app">
       <section class="hero-section">
         <div class="sticky-container">
@@ -24,19 +36,19 @@
       <!-- 1. Product Showcase -->
       <section id="showcase">
         <div class="showcase-container">
-          <div class="product-card">
+          <div class="product-card fade-up">
             <img src="./assets/sprite_bottle_neon.png" alt="Sprite Neon" class="product-img" />
             <div class="product-text text-neon">
               <h2>Original Fresh</h2>
             </div>
           </div>
-          <div class="product-card">
+          <div class="product-card fade-up">
             <img src="./assets/sprite_bottle_neon.png" alt="Sprite Zero" class="product-img" style="filter: hue-rotate(90deg);" />
             <div class="product-text text-neon" style="color: #00ffff;">
               <h2>Zero Sugar</h2>
             </div>
           </div>
-          <div class="product-card">
+          <div class="product-card fade-up">
             <img src="./assets/sprite_bottle_neon.png" alt="Sprite Cherry" class="product-img" style="filter: hue-rotate(-90deg);" />
             <div class="product-text text-neon" style="color: #ff00ff;">
               <h2>Cherry Edge</h2>

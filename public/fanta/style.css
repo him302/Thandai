@@ -1,4 +1,37 @@
 
+/* Lenis Smooth Scroll Recommended CSS */
+html.lenis { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* Premium Global Loader */
+#global-loader {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    background: #050000; z-index: 9999; display: flex; justify-content: center;
+    align-items: center; transition: opacity 1s cubic-bezier(0.65, 0, 0.35, 1), visibility 1s;
+}
+#global-loader.hidden { opacity: 0; visibility: hidden; }
+.loader-content { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+.loader-logo {
+    font-size: 3rem; font-weight: 900; text-transform: uppercase; letter-spacing: 5px;
+    background: linear-gradient(180deg, #fff 0%, #aaa 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    animation: pulseLogo 2s infinite alternate;
+}
+@keyframes pulseLogo { 0% { transform: scale(1); filter: brightness(1); } 100% { transform: scale(1.05); filter: brightness(1.3); } }
+.loader-bar-container { width: 250px; height: 4px; background: rgba(255, 255, 255, 0.1); border-radius: 2px; overflow: hidden; }
+.loader-bar { width: 0%; height: 100%; background: #fff; transition: width 0.2s ease; }
+.loader-text { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: #888; }
+
+/* Fade-up animation classes */
+.fade-up {
+    opacity: 0; transform: translateY(40px);
+    transition: opacity 1s cubic-bezier(0.165, 0.84, 0.44, 1), transform 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+
         body {
             margin: 0;
             background-color: #0a0500; /* Very dark orange/black */

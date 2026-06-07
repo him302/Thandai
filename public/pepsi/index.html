@@ -8,6 +8,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
+
+    <!-- Premium Loading Screen -->
+    <div id="global-loader">
+        <div class="loader-content">
+            <div class="loader-logo">Pepsi</div>
+            <div class="loader-bar-container">
+                <div class="loader-bar" id="loader-progress"></div>
+            </div>
+            <p class="loader-text">Loading the Multiverse...</p>
+        </div>
+    </div>
     <div class="hero-section">
         <div class="sticky-container">
             <canvas id="hero-canvas"></canvas>
@@ -25,28 +36,28 @@
     <!-- 1. Pepsi Product Showcase Section -->
     <section class="product-showcase">
         <div class="product-track">
-            <div class="product-card">
+            <div class="product-card fade-up">
                 <img src="pepsi_can.png" alt="Pepsi Zero Sugar" class="product-img">
                 <div class="product-info">
                     <h3>Zero Sugar</h3>
                     <p>Maximum Taste</p>
                 </div>
             </div>
-            <div class="product-card">
+            <div class="product-card fade-up">
                 <img src="pepsi_can.png" alt="Nitro Pepsi" class="product-img" style="filter: hue-rotate(45deg);">
                 <div class="product-info">
                     <h3>Nitro Pepsi</h3>
                     <p>Smooth Draft Cola</p>
                 </div>
             </div>
-            <div class="product-card">
+            <div class="product-card fade-up">
                 <img src="pepsi_can.png" alt="Pepsi Blue" class="product-img" style="filter: saturate(2) brightness(1.2);">
                 <div class="product-info">
                     <h3>Electric Blue</h3>
                     <p>Limited Edition</p>
                 </div>
             </div>
-            <div class="product-card">
+            <div class="product-card fade-up">
                 <img src="pepsi_can.png" alt="Diet Pepsi" class="product-img" style="filter: grayscale(0.8);">
                 <div class="product-info">
                     <h3>Diet Pepsi</h3>
@@ -127,7 +138,7 @@
 
     <!-- 5. Pepsi Production Experience Section -->
     <section class="production-experience">
-        <h2 class="section-title">The Assembly Line</h2>
+        <h2 class="section-title fade-up">The Assembly Line</h2>
         <div class="factory-line">
             <div class="conveyor-belt"></div>
             <div class="bottles-container">
@@ -144,7 +155,7 @@
     <!-- 6. Sustainability & Future Vision Section -->
     <section class="sustainability">
         <div class="eco-content">
-            <h2 class="section-title text-eco">Beyond The Bottle</h2>
+            <h2 class="section-title text-eco fade-up">Beyond The Bottle</h2>
             <p>100% Recyclable. 100% Future.</p>
             <div class="eco-metrics">
                 <div class="eco-stat"><span>-40%</span> Carbon Footprint</div>
@@ -159,7 +170,7 @@
 
     <!-- 7. Pepsi Legacy Timeline Section -->
     <section class="legacy-timeline">
-        <h2 class="section-title">A Legacy of Cool</h2>
+        <h2 class="section-title fade-up">A Legacy of Cool</h2>
         <div class="timeline-container">
             <div class="timeline-line"></div>
             <div class="timeline-items">
@@ -186,7 +197,7 @@
     <!-- 8. Interactive Pepsi Experience Lab -->
     <section class="experience-lab" id="experience-lab">
         <div class="lab-cursor-light"></div>
-        <h2 class="section-title">The Experience Lab</h2>
+        <h2 class="section-title fade-up">The Experience Lab</h2>
         <p>Interact with the future.</p>
         <div class="interactive-can-container">
             <img src="pepsi_can.png" alt="Interactive Can" class="interactive-can" id="interactive-can">
@@ -217,6 +228,7 @@
         </div>
     </footer>
 
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="script.js"></script>
