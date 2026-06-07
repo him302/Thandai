@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Universal Beverage Multiverse</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Cinematic Loading Screen -->
+    <div id="loading-screen">
+      <div class="loader-content">
+        <h1 class="glitch" data-text="INITIALIZING MULTIVERSE">INITIALIZING MULTIVERSE</h1>
+        <div class="progress-bar-container">
+          <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        <p class="loading-status" id="loading-status">Syncing Dimensions...</p>
+      </div>
+      <div class="loading-bg-glow"></div>
+    </div>
+
+    <div id="multiverse-container">
+      <!-- iFrames for the different beverage universes -->
+      <iframe id="iframe-cola" class="universe-frame active" src="/cola/index.html"></iframe>
+      <iframe id="iframe-sprite" class="universe-frame" src="/sprite/index.html"></iframe>
+      <iframe id="iframe-pepsi" class="universe-frame" src="/pepsi/index.html"></iframe>
+      <iframe id="iframe-fanta" class="universe-frame" src="/fanta/index.html?v=5"></iframe>
+    </div>
+
+    <!-- The Universal Transition Hub WebGL Canvas Overlay -->
+    <canvas id="transition-canvas"></canvas>
+
+    <!-- Global Floating Navigation Portal UI -->
+    <nav id="portal-nav">
+      <div class="nav-ring">
+        <button class="nav-btn cola" data-target="cola">Coca-Cola</button>
+        <button class="nav-btn sprite" data-target="sprite">Sprite</button>
+        <button class="nav-btn pepsi" data-target="pepsi">Pepsi</button>
+        <button class="nav-btn fanta" data-target="fanta">Fanta</button>
+      </div>
+    </nav>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

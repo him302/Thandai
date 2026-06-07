@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pepsi - For the Love of It</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="hero-section">
+        <div class="sticky-container">
+            <canvas id="hero-canvas"></canvas>
+            
+            <!-- Premium Lighting and Glow Overlay -->
+            <div class="lighting-overlay"></div>
+
+            <div class="overlay-text">
+                <h1 class="heading">Pepsi</h1>
+                <p class="subheading">For the love of it</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 1. Pepsi Product Showcase Section -->
+    <section class="product-showcase">
+        <div class="product-track">
+            <div class="product-card">
+                <img src="pepsi_can.png" alt="Pepsi Zero Sugar" class="product-img">
+                <div class="product-info">
+                    <h3>Zero Sugar</h3>
+                    <p>Maximum Taste</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="pepsi_can.png" alt="Nitro Pepsi" class="product-img" style="filter: hue-rotate(45deg);">
+                <div class="product-info">
+                    <h3>Nitro Pepsi</h3>
+                    <p>Smooth Draft Cola</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="pepsi_can.png" alt="Pepsi Blue" class="product-img" style="filter: saturate(2) brightness(1.2);">
+                <div class="product-info">
+                    <h3>Electric Blue</h3>
+                    <p>Limited Edition</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="pepsi_can.png" alt="Diet Pepsi" class="product-img" style="filter: grayscale(0.8);">
+                <div class="product-info">
+                    <h3>Diet Pepsi</h3>
+                    <p>Crisp & Refreshing</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Pepsi Global Impact Statistics Section -->
+    <section class="global-impact">
+        <div class="impact-grid">
+            <div class="stat-card">
+                <h3 class="counter" data-target="200">0</h3>
+                <p>Countries</p>
+            </div>
+            <div class="stat-card">
+                <h3><span class="counter" data-target="1">0</span>B+</h3>
+                <p>Daily Servings</p>
+            </div>
+            <div class="stat-card">
+                <h3 class="counter" data-target="125">0</h3>
+                <p>Years of Legacy</p>
+            </div>
+        </div>
+        <div class="holographic-map">
+            <div class="glow-point p1"></div>
+            <div class="glow-point p2"></div>
+            <div class="glow-point p3"></div>
+            <div class="map-grid"></div>
+        </div>
+    </section>
+
+    <!-- 3. Pepsi Flavor Universe Section -->
+    <section class="flavor-universe" id="flavor-universe">
+        <div class="flavor-container">
+            <div class="flavor-text-side">
+                <h2 class="flavor-title">Discover Your Vibe.</h2>
+                <div class="flavor-indicators">
+                    <span class="indicator active"></span>
+                    <span class="indicator"></span>
+                    <span class="indicator"></span>
+                </div>
+            </div>
+            <div class="flavor-visual-side">
+                <div class="flavor-cards">
+                    <div class="f-card f-original">
+                        <img src="pepsi_can.png" alt="Original">
+                    </div>
+                    <div class="f-card f-zero">
+                        <img src="pepsi_can.png" alt="Zero Sugar" style="filter: hue-rotate(220deg) brightness(0.5);">
+                    </div>
+                    <div class="f-card f-cherry">
+                        <img src="pepsi_can.png" alt="Wild Cherry" style="filter: hue-rotate(300deg) saturate(2);">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Entertainment & Pop Culture Section -->
+    <section class="entertainment-section" style="background-image: url('pepsi_concert.png');">
+        <div class="ent-overlay"></div>
+        <div class="ent-content">
+            <h2 class="cinematic-text">Music. Sports. Culture.</h2>
+            <div class="split-cards">
+                <div class="split-card left-card">
+                    <h3>Global Concerts</h3>
+                    <p>Unforgettable moments under the neon lights.</p>
+                </div>
+                <div class="split-card right-card">
+                    <h3>Premium Sports</h3>
+                    <p>Fueling champions worldwide.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Pepsi Production Experience Section -->
+    <section class="production-experience">
+        <h2 class="section-title">The Assembly Line</h2>
+        <div class="factory-line">
+            <div class="conveyor-belt"></div>
+            <div class="bottles-container">
+                <div class="bottle-silhouette"></div>
+                <div class="bottle-silhouette"></div>
+                <div class="bottle-silhouette"></div>
+                <div class="bottle-silhouette"></div>
+                <div class="bottle-silhouette"></div>
+            </div>
+            <div class="laser-scanner"></div>
+        </div>
+    </section>
+
+    <!-- 6. Sustainability & Future Vision Section -->
+    <section class="sustainability">
+        <div class="eco-content">
+            <h2 class="section-title text-eco">Beyond The Bottle</h2>
+            <p>100% Recyclable. 100% Future.</p>
+            <div class="eco-metrics">
+                <div class="eco-stat"><span>-40%</span> Carbon Footprint</div>
+                <div class="eco-stat"><span>100%</span> Green Energy</div>
+            </div>
+        </div>
+        <div class="eco-image-container">
+            <img src="pepsi_eco.png" alt="Eco Futuristic Earth" class="eco-earth">
+            <div class="energy-waves"></div>
+        </div>
+    </section>
+
+    <!-- 7. Pepsi Legacy Timeline Section -->
+    <section class="legacy-timeline">
+        <h2 class="section-title">A Legacy of Cool</h2>
+        <div class="timeline-container">
+            <div class="timeline-line"></div>
+            <div class="timeline-items">
+                <div class="time-item">
+                    <h4>1898</h4>
+                    <p>The Birth of Pepsi-Cola</p>
+                </div>
+                <div class="time-item">
+                    <h4>1950</h4>
+                    <p>The Iconic Crown Cap</p>
+                </div>
+                <div class="time-item">
+                    <h4>1984</h4>
+                    <p>Choice of a New Generation</p>
+                </div>
+                <div class="time-item">
+                    <h4>2026</h4>
+                    <p>Digital Cyber-Universe</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Interactive Pepsi Experience Lab -->
+    <section class="experience-lab" id="experience-lab">
+        <div class="lab-cursor-light"></div>
+        <h2 class="section-title">The Experience Lab</h2>
+        <p>Interact with the future.</p>
+        <div class="interactive-can-container">
+            <img src="pepsi_can.png" alt="Interactive Can" class="interactive-can" id="interactive-can">
+            <div class="particles-container" id="particles-container"></div>
+        </div>
+    </section>
+
+    <!-- 9. Premium Footer Section -->
+    <footer class="premium-footer">
+        <div class="footer-grid">
+            <div class="f-brand">
+                <h2 class="neon-text">PEPSI</h2>
+                <p>For the love of it.</p>
+            </div>
+            <div class="f-links">
+                <a href="#">Products</a>
+                <a href="#">Culture</a>
+                <a href="#">Sustainability</a>
+            </div>
+            <div class="f-socials">
+                <a href="#" class="social-icon">IG</a>
+                <a href="#" class="social-icon">X</a>
+                <a href="#" class="social-icon">YT</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 PepsiCo, Inc. All rights reserved. (Concept by Antigravity)</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
