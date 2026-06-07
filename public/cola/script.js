@@ -97,10 +97,71 @@ const handleScroll = () => {
 window.addEventListener('scroll', handleScroll, { passive: true });
 window.addEventListener('resize', handleScroll);
 
-/* --- GSAP ANIMATIONS --- */
+/* --- GLOBAL LOADER --- */
+window.addEventListener('load', () => {
+    const loader = document.getElementById('global-loader');
+    const progressBar = document.getElementById('loader-progress');
+    
+    if (progressBar && loader) {
+        // Fake progress to ensure 3D is compiled
+        let progress = 0;
+        const interval = setInterval(() => {
+            progress += Math.random() * 15;
+            if (progress >= 100) {
+                progress = 100;
+                clearInterval(interval);
+                progressBar.style.width = '100%';
+                
+                // Fade out loader
+                setTimeout(() => {
+                    loader.classList.add('hidden');
+                    // Allow scroll again if we were blocking it
+                    document.body.style.overflow = '';
+                }, 500);
+            } else {
+                progressBar.style.width = progress + '%';
+            }
+        }, 100);
+    }
+});
+
+/* --- GSAP ANIMATIONS & LENIS --- */
 // Make sure GSAP is loaded before executing
 document.addEventListener("DOMContentLoaded", (event) => {
     gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
+
+    // Initialize Lenis Smooth Scrolling
+    const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
+        direction: 'vertical',
+        gestureDirection: 'vertical',
+        smooth: true,
+        mouseMultiplier: 1,
+        smoothTouch: false,
+        touchMultiplier: 2,
+        infinite: false,
+    });
+
+    // Link Lenis to GSAP ScrollTrigger
+    lenis.on('scroll', ScrollTrigger.update);
+
+    gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+    });
+
+    gsap.ticker.lagSmoothing(0);
+
+    // Fade-Up Animations
+    const fadeElements = document.querySelectorAll('.fade-up');
+    fadeElements.forEach((el) => {
+        ScrollTrigger.create({
+            trigger: el,
+            start: "top 85%", // Trigger when 85% from the top
+            onEnter: () => el.classList.add('visible'),
+            once: true // Only trigger once
+        });
+    });
 
     // 1. Horizontal Scroll for Products
     const track = document.querySelector('.horizontal-track');

@@ -9,6 +9,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Premium Loading Screen -->
+    <div id="global-loader">
+        <div class="loader-content">
+            <div class="loader-logo">Coca-Cola</div>
+            <div class="loader-bar-container">
+                <div class="loader-bar" id="loader-progress"></div>
+            </div>
+            <p class="loader-text">Loading the Multiverse...</p>
+        </div>
+    </div>
+
     <main class="animation-container">
         <section class="sticky-section">
             <div class="background-glow"></div>
@@ -23,7 +34,8 @@
     </main>
     <div class="cinematic-content">
         <!-- 1. Global Product Showcase Section -->
-        <section class="section product-showcase" id="products">
+        <section class="section product-showcase fade-section" id="products">
+            <h2 class="section-title fade-up">Our Masterpieces</h2>
             <div class="horizontal-scroll-container">
                 <div class="horizontal-track">
                     <div class="product-card">
@@ -113,25 +125,25 @@
         </section>
 
         <!-- Vintage Archives Slideshow Section -->
-        <section class="section vintage-archives" id="vintage">
+        <section class="section vintage-archives fade-section" id="vintage">
             <div class="vintage-slideshow">
                 <div class="slide">
                     <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1565158694086-fe1e48bc60da?auto=format&fit=crop&q=80');"></div>
-                    <div class="slide-content">
+                    <div class="slide-content fade-up">
                         <h2 class="vintage-title">The Early Factories</h2>
                         <p>Where the legendary recipe was first bottled for the masses.</p>
                     </div>
                 </div>
                 <div class="slide">
                     <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&q=80');"></div>
-                    <div class="slide-content">
+                    <div class="slide-content fade-up">
                         <h2 class="vintage-title">Processing Unit Workers</h2>
                         <p>The dedicated hands that built a century of magic.</p>
                     </div>
                 </div>
                 <div class="slide">
                     <div class="slide-bg" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/John_Pemberton.jpg/800px-John_Pemberton.jpg');"></div>
-                    <div class="slide-content">
+                    <div class="slide-content fade-up">
                         <h2 class="vintage-title">John Pemberton</h2>
                         <p>The visionary pharmacist who created the original formula.</p>
                     </div>
@@ -224,14 +236,14 @@
         </section>
 
         <!-- 5. Coca-Cola Business Impact Section -->
-        <section class="section business-impact" id="business">
-            <div class="cinematic-typography-container">
+        <section class="section business-impact fade-section" id="business">
+            <div class="cinematic-typography-container fade-up">
                 <h2 class="cinematic-text">Beyond Beverage</h2>
             </div>
             <div class="floating-panels">
-                <div class="stock-panel glass-panel">Brand Value: $106B+</div>
-                <div class="stock-panel glass-panel">Global Partner: Olympics</div>
-                <div class="stock-panel glass-panel">Cultural Icon</div>
+                <div class="stock-panel glass-panel fade-up">Brand Value: $106B+</div>
+                <div class="stock-panel glass-panel fade-up">Global Partner: Olympics</div>
+                <div class="stock-panel glass-panel fade-up">Cultural Icon</div>
             </div>
         </section>
 
@@ -300,9 +312,9 @@
         </section>
 
         <!-- 8. Interactive Experience Section -->
-        <section class="section interactive-experience" id="interactive">
+        <section class="section interactive-experience fade-section" id="interactive">
             <div class="mouse-follow-light"></div>
-            <div class="interactive-container">
+            <div class="interactive-container fade-up">
                 <h2 class="glitch-title">Interact</h2>
                 <div class="webgl-placeholder">
                     <div class="layer-reflection"></div>
@@ -331,10 +343,11 @@
         </footer>
     </div>
 
-    <!-- GSAP & ScrollTrigger -->
+    <!-- GSAP & ScrollTrigger & Lenis -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
     
     <!-- Three.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
