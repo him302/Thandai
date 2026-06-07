@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coca Cola - Taste the Feeling</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=2">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-
     <main class="animation-container">
         <section class="sticky-section">
             <div class="background-glow"></div>
@@ -27,27 +27,32 @@
             <div class="horizontal-scroll-container">
                 <div class="horizontal-track">
                     <div class="product-card">
+                        <div class="product-bg bg-classic"></div>
                         <div class="product-glow"></div>
                         <h2 class="product-title">Classic Glass</h2>
                         <p class="product-desc">The original recipe since 1886.</p>
                         <div class="liquid-reflection"></div>
                     </div>
                     <div class="product-card">
+                        <div class="product-bg bg-slim"></div>
                         <div class="product-glow"></div>
                         <h2 class="product-title">Slim Can</h2>
                         <p class="product-desc">Modern sleekness. Ice cold.</p>
                     </div>
                     <div class="product-card">
+                        <div class="product-bg bg-zero"></div>
                         <div class="product-glow"></div>
                         <h2 class="product-title">Zero Sugar</h2>
-                        <p class="product-desc">Uncompromised taste. Zero sugar.</p>
+                        <p class="product-desc">Uncompromised taste. Zero Sugar.</p>
                     </div>
                     <div class="product-card">
+                        <div class="product-bg bg-cherry"></div>
                         <div class="product-glow"></div>
                         <h2 class="product-title">Cherry Coke</h2>
                         <p class="product-desc">A burst of cherry sweetness.</p>
                     </div>
                     <div class="product-card">
+                        <div class="product-bg bg-vanilla"></div>
                         <div class="product-glow"></div>
                         <h2 class="product-title">Vanilla Coke</h2>
                         <p class="product-desc">Smooth vanilla finish.</p>
@@ -56,30 +61,34 @@
             </div>
         </section>
 
-        <!-- 2. Worldwide Statistics Section -->
-        <section class="section statistics-section" id="stats">
-            <h2 class="section-title">Global Impact</h2>
-            <div class="stats-grid">
-                <div class="stat-card glass-panel">
-                    <div class="neon-pulse"></div>
-                    <h3 class="stat-number" data-target="1900000000">0</h3>
-                    <p class="stat-label">Servings Daily</p>
+        <!-- 2. Global Impact Living Earth Section -->
+        <section class="living-earth-section" id="stats">
+            <div class="earth-sticky-container">
+                <!-- 3D Canvas -->
+                <div id="earth-canvas-container"></div>
+                
+                <!-- UI Overlays for Scenes -->
+                <div class="earth-ui-layer">
+                    <div class="earth-scene-text" id="scene-title">
+                        <h2>GLOBAL IMPACT</h2>
+                        <p>A living network</p>
+                    </div>
+                    
+                    <div class="earth-scene-stat" id="stat-servings">
+                        <h3 class="earth-stat-number">1.9 BILLION</h3>
+                        <p class="earth-stat-label">Servings Daily</p>
+                    </div>
+
+                    <div class="earth-scene-stat" id="stat-countries">
+                        <h3 class="earth-stat-number">200+</h3>
+                        <p class="earth-stat-label">Countries Served</p>
+                    </div>
+
+                    <div class="earth-scene-stat" id="stat-year">
+                        <h3 class="earth-stat-number">1886</h3>
+                        <p class="earth-stat-label">Year Established</p>
+                    </div>
                 </div>
-                <div class="stat-card glass-panel">
-                    <div class="neon-pulse"></div>
-                    <h3 class="stat-number" data-target="200">0</h3>
-                    <p class="stat-label">Countries Served</p>
-                </div>
-                <div class="stat-card glass-panel">
-                    <div class="neon-pulse"></div>
-                    <h3 class="stat-number" data-target="1886">0</h3>
-                    <p class="stat-label">Year Established</p>
-                </div>
-            </div>
-            <div class="interactive-map">
-                <div class="glowing-region" style="top: 30%; left: 20%;"></div>
-                <div class="glowing-region" style="top: 40%; left: 50%;"></div>
-                <div class="glowing-region" style="top: 60%; left: 70%;"></div>
             </div>
         </section>
 
@@ -88,39 +97,128 @@
             <div class="flavor-particles"></div>
             <h2 class="section-title">The Flavour Spectrum</h2>
             <div class="flavours-container">
-                <div class="flavor-theme original active">
+                <div class="flavor-theme bg-classic active">
                     <h3>Original</h3>
                     <div class="smoke-dissolve"></div>
                 </div>
-                <div class="flavor-theme zero">
+                <div class="flavor-theme bg-zero">
                     <h3>Zero Sugar</h3>
                     <div class="liquid-wave"></div>
                 </div>
-                <div class="flavor-theme cherry">
+                <div class="flavor-theme bg-cherry">
                     <h3>Cherry</h3>
                     <div class="carbonation-bubbles"></div>
                 </div>
             </div>
         </section>
 
-        <!-- 4. Production & Manufacturing Experience -->
-        <section class="section production-section" id="production">
-            <h2 class="section-title">The Pipeline</h2>
-            <div class="production-timeline">
-                <div class="timeline-step">
-                    <div class="glowing-machinery"></div>
-                    <h4>Ingredient Sourcing</h4>
-                    <p>Finest global ingredients.</p>
+        <!-- Vintage Archives Slideshow Section -->
+        <section class="section vintage-archives" id="vintage">
+            <div class="vintage-slideshow">
+                <div class="slide">
+                    <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1565158694086-fe1e48bc60da?auto=format&fit=crop&q=80');"></div>
+                    <div class="slide-content">
+                        <h2 class="vintage-title">The Early Factories</h2>
+                        <p>Where the legendary recipe was first bottled for the masses.</p>
+                    </div>
                 </div>
-                <div class="timeline-step">
-                    <div class="conveyor-belt"></div>
-                    <h4>Manufacturing</h4>
-                    <p>State-of-the-art bottling.</p>
+                <div class="slide">
+                    <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&q=80');"></div>
+                    <div class="slide-content">
+                        <h2 class="vintage-title">Processing Unit Workers</h2>
+                        <p>The dedicated hands that built a century of magic.</p>
+                    </div>
                 </div>
-                <div class="timeline-step">
-                    <div class="mechanical-element"></div>
-                    <h4>Distribution</h4>
-                    <p>Delivered ice cold.</p>
+                <div class="slide">
+                    <div class="slide-bg" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/John_Pemberton.jpg/800px-John_Pemberton.jpg');"></div>
+                    <div class="slide-content">
+                        <h2 class="vintage-title">John Pemberton</h2>
+                        <p>The visionary pharmacist who created the original formula.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Route 66 Vintage Pipeline Journey -->
+        <section class="section vintage-journey-section" id="production">
+            <div class="journey-sticky-container">
+                <div class="journey-scroll-area">
+                    
+                    <!-- Parallax Backgrounds -->
+                    <div class="parallax-bg layer-sky"></div>
+                    <div class="parallax-bg layer-mountains"></div>
+                    <div class="parallax-bg layer-desert"></div>
+                    
+                    <!-- The Winding Road SVG -->
+                    <div class="road-container">
+                        <h2 class="journey-title">The Coca-Cola Pipeline</h2>
+                        <svg id="route66-svg" viewBox="0 0 3500 600">
+                            <!-- Background thick asphalt -->
+                            <path class="road-asphalt" d="M -100,500 C 400,500 600,100 1000,200 S 1400,450 1800,300 S 2200,100 2600,200 S 2900,400 3600,400" fill="none" stroke="#1a1a1a" stroke-width="60" />
+                            <!-- Dashed Yellow Centerline -->
+                            <path id="route66-path" class="road-path" d="M -100,500 C 400,500 600,100 1000,200 S 1400,450 1800,300 S 2200,100 2600,200 S 2900,400 3600,400" fill="none" stroke="#f1c40f" stroke-width="6" stroke-dasharray="24 24" />
+                        </svg>
+
+                        <!-- Glowing Delivery Truck -->
+                        <div class="delivery-truck" id="coke-truck">
+                            <div class="truck-glow"></div>
+                            <div class="truck-body">
+                                <span class="coca-cola-logo">Coca-Cola</span>
+                            </div>
+                            <div class="truck-cab"></div>
+                            <div class="wheel wheel-front"></div>
+                            <div class="wheel wheel-back"></div>
+                        </div>
+
+                        <!-- Stops / Milestones -->
+                        <div class="milestone-stop" id="stop-1">
+                            <div class="vintage-signboard">
+                                <h4>Stop 1</h4>
+                                <h3>Ingredient Sourcing</h3>
+                                <p>Finest global ingredients harvested with care.</p>
+                            </div>
+                            <div class="traffic-stand">
+                                <div class="traffic-light"></div>
+                                <div class="stand-pole"></div>
+                            </div>
+                        </div>
+
+                        <div class="milestone-stop" id="stop-2">
+                            <div class="vintage-signboard">
+                                <h4>Stop 2</h4>
+                                <h3>Manufacturing</h3>
+                                <p>State-of-the-art bottling and secret formula blending.</p>
+                            </div>
+                            <div class="traffic-stand">
+                                <div class="traffic-light"></div>
+                                <div class="stand-pole"></div>
+                            </div>
+                        </div>
+
+                        <div class="milestone-stop" id="stop-3">
+                            <div class="vintage-signboard">
+                                <h4>Stop 3</h4>
+                                <h3>Distribution</h3>
+                                <p>Delivered ice cold to every corner of the globe.</p>
+                            </div>
+                            <div class="traffic-stand">
+                                <div class="traffic-light"></div>
+                                <div class="stand-pole"></div>
+                            </div>
+                        </div>
+
+                        <div class="milestone-stop" id="stop-4">
+                            <div class="vintage-signboard final-stop">
+                                <h4>Stop 4</h4>
+                                <h3>The Consumer</h3>
+                                <p>Taste the Feeling. Sharing happiness since 1886.</p>
+                            </div>
+                            <div class="traffic-stand">
+                                <div class="traffic-light"></div>
+                                <div class="stand-pole"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -138,33 +236,65 @@
         </section>
 
         <!-- 6. Sustainability & Future Vision Section -->
-        <section class="section sustainability-section" id="sustainability">
-            <div class="energy-waves"></div>
-            <h2 class="section-title eco-green">World Without Waste</h2>
-            <div class="eco-cards">
-                <div class="transparent-card glass-panel">100% Recyclable Goals</div>
-                <div class="transparent-card glass-panel">Water Stewardship</div>
-                <div class="transparent-card glass-panel">Carbon Neutral Future</div>
+        <section class="sustainability-earth-section" id="sustainability">
+            <div class="sustain-sticky-container">
+                <!-- 3D Canvas -->
+                <div id="sustainability-canvas-container"></div>
+                
+                <!-- UI Overlays for Scenes -->
+                <div class="sustain-ui-layer">
+                    <div class="sustain-scene-text" id="sustain-title">
+                        <h2 class="eco-green">World Without Waste</h2>
+                    </div>
+                    
+                    <div class="sustain-scene-text" id="sustain-water">
+                        <h3>Cleaning Oceans</h3>
+                        <p>Restoring the blue.</p>
+                    </div>
+
+                    <div class="sustain-scene-text" id="sustain-forests">
+                        <h3 class="eco-green">Growing Forests</h3>
+                        <p>Breathing life back.</p>
+                    </div>
+
+                    <div class="sustain-scene-text" id="sustain-future">
+                        <h3 class="eco-blue">A Clean Future</h3>
+                        <p>100% Recyclable. Carbon Neutral.</p>
+                    </div>
+                </div>
             </div>
-            <div class="interactive-globe"></div>
         </section>
 
-        <!-- 7. Brand Legacy Timeline -->
-        <section class="section legacy-timeline" id="legacy">
-            <div class="film-grain"></div>
-            <h2 class="section-title">A Century of Magic</h2>
-            <div class="timeline-scroll">
-                <div class="timeline-era">
-                    <div class="retro-lighting"></div>
-                    <h3>1886 - The Beginning</h3>
-                </div>
-                <div class="timeline-era">
-                    <div class="retro-lighting"></div>
-                    <h3>1915 - The Contour Bottle</h3>
-                </div>
-                <div class="timeline-era">
-                    <div class="retro-lighting"></div>
-                    <h3>2024 - Real Magic</h3>
+        <!-- 7. Brand Legacy Timeline (3D Immersive) -->
+        <section class="legacy-timeline-3d" id="legacy-3d">
+            <div class="sticky-3d-container">
+                <div id="webgl-timeline-container"></div>
+                <div class="holo-ui-layer">
+                    <h2 class="holo-title" id="holo-main-title">A Century of Magic</h2>
+                    <div class="holo-marker" id="marker-0">
+                        <div class="holo-indicator"></div>
+                        <div class="holo-card">
+                            <h3>1886</h3><p>The Original Recipe</p>
+                        </div>
+                    </div>
+                    <div class="holo-marker" id="marker-1">
+                        <div class="holo-indicator"></div>
+                        <div class="holo-card">
+                            <h3>1915</h3><p>The Contour Bottle</p>
+                        </div>
+                    </div>
+                    <div class="holo-marker" id="marker-2">
+                        <div class="holo-indicator"></div>
+                        <div class="holo-card">
+                            <h3>1950</h3><p>Global Expansion</p>
+                        </div>
+                    </div>
+                    <div class="holo-marker" id="marker-3">
+                        <div class="holo-indicator"></div>
+                        <div class="holo-card">
+                            <h3>2024</h3><p>Real Magic</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -204,6 +334,14 @@
     <!-- GSAP & ScrollTrigger -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
+    
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
     <script src="script.js"></script>
+    <script src="timeline3D.js"></script>
+    <script src="earth3D.js"></script>
+    <script src="sustainability3D.js"></script>
 </body>
 </html>

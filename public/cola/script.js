@@ -100,9 +100,7 @@ window.addEventListener('resize', handleScroll);
 /* --- GSAP ANIMATIONS --- */
 // Make sure GSAP is loaded before executing
 document.addEventListener("DOMContentLoaded", (event) => {
-    if (typeof gsap === 'undefined') return;
-
-    gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
     // 1. Horizontal Scroll for Products
     const track = document.querySelector('.horizontal-track');
@@ -120,7 +118,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
             }
         });
     }
-
     // 2. Statistics Counters
     const stats = document.querySelectorAll('.stat-number');
     stats.forEach(stat => {
@@ -139,6 +136,89 @@ document.addEventListener("DOMContentLoaded", (event) => {
             }
         });
     });
+
+    // 4. Route 66 Vintage Journey
+    const journeySection = document.querySelector('.vintage-journey-section');
+    const scrollArea = document.querySelector('.journey-scroll-area');
+    const truck = document.getElementById('coke-truck');
+    const roadPath = document.getElementById('route66-path');
+    const milestones = document.querySelectorAll('.milestone-stop');
+
+    if (journeySection && truck && roadPath) {
+        
+        // Responsive scaling for the road container to fit on small screens
+        let scale = 1;
+        const roadContainer = document.querySelector('.road-container');
+        if (roadContainer) {
+            scale = Math.min(1, window.innerHeight / 800);
+            gsap.set(roadContainer, { scale: scale });
+        }
+
+        const totalScrollWidth = 3500 * scale; // Adjust total scroll based on scale
+
+        const journeyTl = gsap.timeline({
+            scrollTrigger: {
+                trigger: journeySection,
+                pin: true,
+                scrub: 1,
+                end: () => "+=" + totalScrollWidth
+            }
+        });
+
+        // Move container left
+        // Ensure it only scrolls enough to reach the end of the scaled road
+        const maxScroll = Math.max(0, (3500 * scale) - window.innerWidth + 100);
+        journeyTl.to(scrollArea, {
+            x: -maxScroll,
+            ease: "none",
+            duration: 1
+        }, 0);
+
+        // Parallax Layers
+        journeyTl.to('.layer-mountains', { x: -300 * scale, ease: "none", duration: 1 }, 0);
+        journeyTl.to('.layer-desert', { x: -600 * scale, ease: "none", duration: 1 }, 0);
+
+        // Drive the truck
+        journeyTl.to(truck, {
+            motionPath: {
+                path: roadPath,
+                align: roadPath,
+                alignOrigin: [0.5, 1],
+                autoRotate: true
+            },
+            ease: "none",
+            duration: 1,
+            onUpdate: function() {
+                const title = document.querySelector('.journey-title');
+                if (title) {
+                    // Sync the title's X translation perfectly with the truck's X translation
+                    gsap.set(title, { x: gsap.getProperty(truck, "x") });
+                }
+            }
+        }, 0);
+
+        // Milestone reveals (Exact fractions based on bezier arc length approximation)
+        const fractions = [0.30, 0.51, 0.73, 0.84]; // Path percentages
+        milestones.forEach((stop, i) => {
+            const signboard = stop.querySelector('.vintage-signboard');
+            
+            // Reveal signboard
+            journeyTl.to(signboard, {
+                opacity: 1,
+                y: 0,
+                duration: 0.05
+            }, fractions[i] - 0.05);
+
+            // Add glow when exactly at the spot
+            journeyTl.call(() => {
+                stop.classList.add('glow');
+            }, [], fractions[i]);
+
+            journeyTl.call(() => {
+                stop.classList.remove('glow');
+            }, [], fractions[i] - 0.02); // Remove when scrolling back
+        });
+    }
 
     // 3. Flavours Background Morph & Reveals
     const flavoursSection = document.querySelector('.flavours-experience');
