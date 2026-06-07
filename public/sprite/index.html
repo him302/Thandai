@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sprite - Obey Your Thirst</title>
+    <!-- Use Inter font for premium feel -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <script type="module" crossorigin src="./assets/sprite-app.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/sprite-style.css?v=2">
+  </head>
+  <body>
+    <div id="app">
+      <section class="hero-section">
+        <div class="sticky-container">
+          <canvas id="hero-canvas"></canvas>
+          <div class="overlay-text" id="hero-text">
+            <h1>sprite</h1>
+            <p>Obey Your Thirst</p>
+          </div>
+        </div>
+      </section>
+      <!-- 1. Product Showcase -->
+      <section id="showcase">
+        <div class="showcase-container">
+          <div class="product-card">
+            <img src="./assets/sprite_bottle_neon.png" alt="Sprite Neon" class="product-img" />
+            <div class="product-text text-neon">
+              <h2>Original Fresh</h2>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="./assets/sprite_bottle_neon.png" alt="Sprite Zero" class="product-img" style="filter: hue-rotate(90deg);" />
+            <div class="product-text text-neon" style="color: #00ffff;">
+              <h2>Zero Sugar</h2>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="./assets/sprite_bottle_neon.png" alt="Sprite Cherry" class="product-img" style="filter: hue-rotate(-90deg);" />
+            <div class="product-text text-neon" style="color: #ff00ff;">
+              <h2>Cherry Edge</h2>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Global Stats -->
+      <section id="stats" class="section-padding">
+        <h2 class="text-neon" style="font-size: 3rem; text-align: center;">Global Refresh Network</h2>
+        <div class="stats-grid">
+          <div class="stat-box glass-panel">
+            <span class="stat-num" data-target="190">0</span>
+            <span class="stat-label">Countries</span>
+          </div>
+          <div class="stat-box glass-panel">
+            <span class="stat-num" data-target="15000000">0</span>
+            <span class="stat-label">Daily Servings</span>
+          </div>
+          <div class="stat-box glass-panel">
+            <span class="stat-num" data-target="100">0</span>
+            <span class="stat-label">% Recyclable</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Flavor Explosion -->
+      <section id="flavors" class="section-padding">
+        <h2 class="text-neon" style="font-size: 4rem; z-index: 2; position: relative;">Flavor Explosion</h2>
+        <img src="./assets/neon_lime_slice.png" class="flavor-slice" id="slice1" style="top: 20%; left: 10%;" />
+        <img src="./assets/neon_lime_slice.png" class="flavor-slice" id="slice2" style="bottom: 10%; right: 10%; transform: scale(1.5);" />
+        <img src="./assets/neon_lime_slice.png" class="flavor-slice" id="slice3" style="top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.5;" />
+      </section>
+
+      <!-- 4. Ice Experience -->
+      <section id="ice-experience">
+        <!-- Explicit Background Image (Foolproof against CSS bugs) -->
+        <img src="./assets/ice_splash_dark.png" class="absolute-bg" alt="Ice Splash" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; opacity: 0.8;" />
+        
+        <div class="ice-text" style="z-index: 2; position: relative; text-align: center;">
+          <h2>Ultimate<br>Refreshment</h2>
+        </div>
+        
+        <!-- Foreground Sprite Bottle -->
+        <img src="./assets/sprite_bottle_neon.png" alt="Sprite Bottle" style="position: absolute; bottom: -10%; left: 50%; transform: translateX(-50%); height: 80vh; z-index: 1; filter: drop-shadow(0 0 30px rgba(164, 255, 0, 0.4));" />
+      </section>
+
+      <!-- 5. Lifestyle -->
+      <section id="lifestyle">
+        <div class="split-layout">
+          <div class="split-left">
+            <h2 class="text-neon">Obey<br>Your<br>Thirst.</h2>
+          </div>
+          <div class="split-right">
+            <div class="lifestyle-video glass-panel">
+              <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;">
+                <h3 style="color: rgba(255,255,255,0.2); font-size: 2rem;">[Cinematic Video Loop]</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. Sustainability -->
+      <section id="sustainability" class="section-padding" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <h2 class="text-neon" style="font-size: 3rem; margin-bottom: 2rem; z-index: 2;">Green Future</h2>
+        <div class="eco-circle"></div>
+        <div class="glass-panel" style="padding: 2rem; z-index: 2; max-width: 600px; text-align: center;">
+          <p style="font-size: 1.2rem; line-height: 1.6; color: #ccc;">Our commitment to a sustainable future starts with 100% recyclable packaging and eco-friendly energy sources.</p>
+        </div>
+      </section>
+
+      <!-- 7. Timeline -->
+      <section id="timeline">
+        <h2 class="text-neon" style="text-align: center; font-size: 3rem; margin-bottom: 4rem;">The Legacy</h2>
+        <div class="timeline-container">
+          <div class="timeline-item glass-panel" style="padding: 2rem;">
+            <h3 class="text-neon">1961</h3>
+            <p>The birth of crisp, refreshing lemon-lime flavor.</p>
+          </div>
+          <div class="timeline-item glass-panel" style="padding: 2rem;">
+            <h3 class="text-neon">1994</h3>
+            <p>"Obey Your Thirst" defines a generation.</p>
+          </div>
+          <div class="timeline-item glass-panel" style="padding: 2rem;">
+            <h3 class="text-neon">2026</h3>
+            <p>The futuristic digital refreshment era.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. Product Lab -->
+      <section id="product-lab">
+        <div class="lab-interface glass-panel">
+          <h2 class="text-neon" style="position: absolute; top: 2rem; left: 2rem;">Interactive Lab</h2>
+          <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none;">
+             <p style="color: rgba(164, 255, 0, 0.5); font-size: 1.5rem;">[WebGL Liquid Simulation]</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 9. Footer -->
+      <footer>
+        <div class="footer-grid">
+          <div>
+            <h3 class="text-neon" style="font-size: 2rem; margin-bottom: 1rem; font-weight: 900;">sprite</h3>
+            <p style="color: #666; font-size: 0.9rem;">Obey Your Thirst.</p>
+          </div>
+          <div>
+            <h4 style="color: white; margin-bottom: 1rem;">Explore</h4>
+            <a href="#" class="footer-link" style="display: block; margin-bottom: 0.5rem;">Products</a>
+            <a href="#" class="footer-link" style="display: block; margin-bottom: 0.5rem;">Flavors</a>
+            <a href="#" class="footer-link" style="display: block; margin-bottom: 0.5rem;">Sustainability</a>
+          </div>
+          <div>
+            <h4 style="color: white; margin-bottom: 1rem;">Legal</h4>
+            <a href="#" class="footer-link" style="display: block; margin-bottom: 0.5rem;">Privacy</a>
+            <a href="#" class="footer-link" style="display: block; margin-bottom: 0.5rem;">Terms</a>
+          </div>
+          <div>
+            <h4 style="color: white; margin-bottom: 1rem;">Follow</h4>
+            <a href="#" class="footer-link" style="display: block; margin-bottom: 0.5rem;">Instagram</a>
+            <a href="#" class="footer-link" style="display: block; margin-bottom: 0.5rem;">Twitter</a>
+            <a href="#" class="footer-link" style="display: block; margin-bottom: 0.5rem;">TikTok</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

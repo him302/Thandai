@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..900;1,400..900&amp;family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+        @keyframes liquid-morph {
+            0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+            100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+        }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        
+        .glass-panel {
+            backdrop-filter: blur(30px);
+            background: rgba(255, 255, 255, 0.05);
+            border: 0.5px solid rgba(198, 198, 199, 0.2);
+        }
+        
+        .refraction-glass {
+            position: relative;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .refraction-glass::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 45%,
+                rgba(255, 255, 255, 0.1) 48%,
+                rgba(255, 255, 255, 0.4) 50%,
+                rgba(255, 255, 255, 0.1) 52%,
+                transparent 55%
+            );
+            transform: rotate(25deg);
+            animation: shine 10s infinite linear;
+        }
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(25deg); }
+            100% { transform: translateX(100%) rotate(25deg); }
+        }
+
+        .red-glow {
+            filter: drop-shadow(0 0 15px rgba(220, 20, 60, 0.6));
+        }
+        .particle {
+            position: absolute;
+            background: #ff0000;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .bubble {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.2);
+            border: 0.5px solid rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            pointer-events: none;
+            bottom: -20px;
+        }
+        .can-container {
+            perspective: 2000px;
+        }
+        .draggable-can {
+            transform-style: preserve-3d;
+            transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .radial-void {
+            background: radial-gradient(circle at center, #2a0505 0%, #141313 70%, #0a0a0b 100%);
+        }
+        .section-reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .section-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-liquid-bg {
+            position: absolute;
+            inset: 0;
+            background: rgba(220, 20, 60, 0.05);
+            z-index: -1;
+            animation: liquid-morph 15s ease-in-out infinite;
+        }
+    </style>
+<title>AETHER VOID | COCA-COLA EXPERIENCE</title>
+</head>
+<body class="bg-background text-on-background overflow-x-hidden selection:bg-primary selection:text-on-primary">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed": "#1a1c1c",
+                    "on-error-container": "#ffdad6",
+                    "on-tertiary-fixed": "#1d1b19",
+                    "on-primary-container": "#7a797a",
+                    "secondary-fixed": "#e2e2e2",
+                    "on-primary-fixed": "#1c1b1c",
+                    "surface-bright": "#3a3939",
+                    "on-tertiary-container": "#7c7975",
+                    "surface-container-lowest": "#0e0e0e",
+                    "on-secondary-container": "#b4b5b5",
+                    "surface-dim": "#141313",
+                    "on-secondary-fixed-variant": "#454747",
+                    "primary-container": "#0a0a0b",
+                    "on-error": "#690005",
+                    "on-primary-fixed-variant": "#474647",
+                    "surface-container-high": "#2b2a2a",
+                    "inverse-on-surface": "#313030",
+                    "secondary-fixed-dim": "#c6c6c7",
+                    "surface-container-highest": "#353434",
+                    "secondary-container": "#454747",
+                    "tertiary": "#cac6c2",
+                    "primary": "#c8c6c7",
+                    "on-primary": "#313031",
+                    "inverse-primary": "#5f5e5f",
+                    "inverse-surface": "#e5e2e1",
+                    "background": "#141313",
+                    "on-surface": "#e5e2e1",
+                    "surface-container": "#201f1f",
+                    "on-tertiary-fixed-variant": "#494643",
+                    "on-tertiary": "#32302d",
+                    "error": "#ffb4ab",
+                    "primary-fixed-dim": "#c8c6c7",
+                    "on-background": "#e5e2e1",
+                    "surface-container-low": "#1c1b1c",
+                    "on-surface-variant": "#c7c6ca",
+                    "tertiary-fixed": "#e7e2dd",
+                    "outline-variant": "#46464a",
+                    "on-secondary": "#2f3131",
+                    "error-container": "#93000a",
+                    "outline": "#919094",
+                    "tertiary-container": "#0b0a08",
+                    "surface-tint": "#c8c6c7",
+                    "surface": "#141313",
+                    "primary-fixed": "#e5e2e3",
+                    "surface-variant": "#353434",
+                    "tertiary-fixed-dim": "#cac6c2",
+                    "secondary": "#c6c6c7"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "section-gap": "160px",
+                    "edge-margin-mobile": "24px",
+                    "container-max": "1440px",
+                    "edge-margin-desktop": "80px",
+                    "unit": "8px"
+            },
+            "fontFamily": {
+                    "display-hero": ["Bodoni Moda"],
+                    "display-hero-mobile": ["Bodoni Moda"],
+                    "ui-label": ["JetBrains Mono"],
+                    "headline-lg": ["Bodoni Moda"],
+                    "headline-sm": ["Plus Jakarta Sans"],
+                    "body-main": ["Plus Jakarta Sans"],
+                    "data-mono": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "display-hero": ["120px", {"lineHeight": "110%", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                    "display-hero-mobile": ["56px", {"lineHeight": "110%", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "ui-label": ["10px", {"lineHeight": "100%", "letterSpacing": "0.1em", "fontWeight": "500"}],
+                    "headline-lg": ["48px", {"lineHeight": "120%", "fontWeight": "400"}],
+                    "headline-sm": ["20px", {"lineHeight": "140%", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-main": ["16px", {"lineHeight": "160%", "fontWeight": "400"}],
+                    "data-mono": ["12px", {"lineHeight": "150%", "letterSpacing": "0.2em", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-edge-margin-desktop py-unit backdrop-blur-xl bg-surface/5 border-b-[0.5px] border-secondary/20">
+<div class="font-display-hero text-headline-sm tracking-tighter text-on-surface">AETHER VOID</div>
+<nav class="hidden md:flex gap-10">
+<a class="font-ui-label text-ui-label text-primary border-b border-primary pb-1 transition-all duration-500 hover:tracking-widest" href="#">STORY</a>
+<a class="font-ui-label text-ui-label text-on-surface-variant/60 transition-all duration-500 hover:text-primary hover:tracking-widest" href="#">ARCHIVE</a>
+<a class="font-ui-label text-ui-label text-on-surface-variant/60 transition-all duration-500 hover:text-primary hover:tracking-widest" href="#">ESSENCE</a>
+<a class="font-ui-label text-ui-label text-on-surface-variant/60 transition-all duration-500 hover:text-primary hover:tracking-widest" href="#">COLLECT</a>
+</nav>
+<div class="flex gap-6 items-center">
+<span class="material-symbols-outlined text-on-surface cursor-pointer hover:text-primary transition-colors">shopping_bag</span>
+<span class="material-symbols-outlined text-on-surface cursor-pointer hover:text-primary transition-colors">menu</span>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full flex flex-col justify-between py-10 z-40 backdrop-blur-3xl bg-surface-container-lowest/10 border-r-[0.5px] border-outline-variant/30 w-20 items-center">
+<div class="flex flex-col gap-12 items-center">
+<div class="text-primary font-display-hero text-headline-sm">AE</div>
+<div class="flex flex-col gap-10">
+<button class="group flex flex-col items-center gap-1">
+<span class="material-symbols-outlined text-primary drop-shadow-[0_0_8px_rgba(200,198,199,0.8)]">blur_on</span>
+<span class="font-data-mono text-[8px] opacity-0 group-hover:opacity-100 transition-opacity">VISUALIZER</span>
+</button>
+<button class="group flex flex-col items-center gap-1">
+<span class="material-symbols-outlined text-on-secondary-fixed-variant hover:text-primary transition-colors">waves</span>
+<span class="font-data-mono text-[8px] opacity-0 group-hover:opacity-100 transition-opacity">SPECTROMETER</span>
+</button>
+<button class="group flex flex-col items-center gap-1">
+<span class="material-symbols-outlined text-on-secondary-fixed-variant hover:text-primary transition-colors">science</span>
+<span class="font-data-mono text-[8px] opacity-0 group-hover:opacity-100 transition-opacity">MOLECULAR</span>
+</button>
+<button class="group flex flex-col items-center gap-1">
+<span class="material-symbols-outlined text-on-secondary-fixed-variant hover:text-primary transition-colors">opacity</span>
+<span class="font-data-mono text-[8px] opacity-0 group-hover:opacity-100 transition-opacity">DISTILLERY</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-8 items-center">
+<button class="material-symbols-outlined text-on-secondary-fixed-variant hover:text-primary">settings</button>
+<div class="w-8 h-8 rounded-full border border-primary/30 flex items-center justify-center overflow-hidden">
+<img alt="Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgrfx1u0fqNd280oGhnVA9h81uOL5p-ltNPLSCGQRibVsZoRYI32zwehoUq1cRhTjVb8cn0F1r_tZuD5E0Te8JZFvx44OZ-lSA3HP4eHNUlDs0uo3iu_rM0jCfNPorNARJFzRKWByRNRgzrpe4GPLAkQO0UoXofAuqNZQWD12h9DgjnBo96Pg2jZzj0BBjWKouMZ15BX0PGA-RzNrByOVfeXOfY1ZjBz3JeQuR7Xar8hZadtCcTb01jfjwtg721hRfgx8h24nAqQ"/>
+</div>
+</div>
+</aside>
+<main class="ml-20 radial-void min-h-screen">
+<!-- Hero Section -->
+<section class="relative h-screen flex items-center justify-center overflow-hidden px-edge-margin-desktop" id="hero">
+<!-- Particles & Bubbles Background -->
+<div class="absolute inset-0 pointer-events-none" id="particle-container"></div>
+<div class="absolute inset-0 pointer-events-none overflow-hidden" id="bubble-container"></div>
+<div class="grid grid-cols-12 w-full max-w-container-max relative z-10">
+<div class="col-span-12 md:col-span-5 flex flex-col justify-center">
+<div class="mb-4">
+<span class="font-data-mono text-data-mono text-primary bg-primary/10 px-3 py-1 border-l-2 border-primary">BATCH NO. CC-1886-A</span>
+</div>
+<h1 class="font-display-hero text-display-hero text-on-surface leading-none mb-6">LIQUID <br/><span class="italic text-primary">ENIGMA</span></h1>
+<p class="font-body-main text-body-main text-on-surface-variant max-w-md mb-12">
+                        A sensory transcendence. Experience the deep obsidian curve and the sharp crimson flicker of the world's most iconic silhouette, reimagined for the aether.
+                    </p>
+<button class="group relative w-fit bg-on-surface text-background px-10 py-5 font-ui-label text-ui-label uppercase tracking-widest hover:bg-primary transition-all duration-500 overflow-hidden">
+<span class="relative z-10">ACQUIRE ESSENCE</span>
+<div class="absolute inset-0 bg-red-600/40 opacity-0 group-hover:opacity-100 blur-xl transition-opacity"></div>
+</button>
+</div>
+<div class="col-span-12 md:col-span-7 flex justify-center items-center relative can-container" id="camera-rig">
+<!-- The 3D Can -->
+<div class="animate-float relative z-20 cursor-grab active:cursor-grabbing draggable-can" id="hero-can">
+<img alt="Coca-Cola Can" class="w-[450px] red-glow transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCt3ab4nEOakk7wB0DDi2YJ1_k0FNYz0cf6kSy9IQyAoTKJN95agZ5mHnJINnmeRLh-LcKN5i2ktYhJQNcpA1YUrRQYSTHJxM9dAX8ScNxtYBghHsXx55OQnMqBd1anldb7na3urBfESgEu7T36zZJRjnqm1nSNKuvLRsCwRhSnOyUsVuLf-WvuNWnHrqwM9Xu2dkTKft6nvhHwqoX2M7SLdZKgIybR63eM9wL8AEi-XOAG1rotO3F36pxcJCftx4aIkFjZArKzjQ"/>
+<!-- Leader Lines -->
+<div class="absolute -top-10 -right-20 hidden lg:block">
+<div class="flex items-center gap-4">
+<div class="w-32 h-[1px] bg-primary/30 origin-right -rotate-45"></div>
+<div class="text-right">
+<div class="font-data-mono text-[10px] text-primary">SURFACE_TENSION</div>
+<div class="font-ui-label text-ui-label text-on-surface/60">MOISTURE CONTROLLED</div>
+</div>
+</div>
+</div>
+<div class="absolute -bottom-10 -left-20 hidden lg:block">
+<div class="flex items-center gap-4">
+<div class="text-left">
+<div class="font-data-mono text-[10px] text-primary">CORE_PRESSURE</div>
+<div class="font-ui-label text-ui-label text-on-surface/60">CARBONATION OPTIMIZED</div>
+</div>
+<div class="w-32 h-[1px] bg-primary/30 origin-left -rotate-45"></div>
+</div>
+</div>
+</div>
+<!-- Backdrop Glow -->
+<div class="absolute w-[600px] h-[600px] bg-red-900/10 rounded-full blur-[120px]"></div>
+</div>
+</div>
+<!-- Scroll Indicator -->
+<div class="absolute right-edge-margin-desktop top-1/2 -translate-y-1/2 flex flex-col items-center gap-4">
+<div class="font-data-mono text-[10px] rotate-90 origin-center translate-y-12 text-primary/40 uppercase">Aether_Depth</div>
+<div class="w-[1px] h-48 bg-primary/20 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1/4 bg-primary shadow-[0_0_10px_#ff0000]" id="scroll-bar"></div>
+</div>
+</div>
+</section>
+<!-- The Classic Reborn Section -->
+<section class="relative py-section-gap px-edge-margin-desktop section-reveal" id="reborn">
+<div class="reveal-liquid-bg"></div>
+<div class="max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+<div class="relative order-2 md:order-1">
+<div class="glass-panel p-10 relative z-10 overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent"></div>
+<h2 class="font-display-hero text-headline-lg text-on-surface mb-8">THE CLASSIC <br/><span class="italic">REBORN</span></h2>
+<div class="space-y-6 relative">
+<p class="font-body-main text-on-surface-variant">
+                                    Decades of legacy distilled into a single, crystalline moment. The formula remains secret, the sensation remains unparalleled.
+                                </p>
+<div class="grid grid-cols-2 gap-4">
+<div class="border-[0.5px] border-primary/20 p-4 refraction-glass">
+<div class="font-data-mono text-[10px] text-primary">REACTIVE_TEMP</div>
+<div class="font-headline-sm text-on-surface">3.4°C</div>
+</div>
+<div class="border-[0.5px] border-primary/20 p-4 refraction-glass">
+<div class="font-data-mono text-[10px] text-primary">VISCOSITY_INDEX</div>
+<div class="font-headline-sm text-on-surface">1.02</div>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute -top-20 -left-20 w-80 h-80 opacity-40 mix-blend-screen pointer-events-none">
+<img alt="Ice splash" class="w-full h-full object-contain animate-float" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWsTfzwO_3H895HcEL--2OSRuA1n87so1-vWJymXd9yhdcMP8zLIpQg4anQSovNOq-ywZX-VJqUguesCz5JixeYu0VrFlu2UabdMr_HRK3OXw-8ZzEprtGiLLX7GuWMF5Mlf3MbRlAnDU8fSnB9S855L4f_eQ3iXL7NJHHmrW3zG9wO16xECLCp3P7u5AEgcvv4gLW3nWB2v0RdwB3myCW5CNXCHwwetDL5Tmp0IpJDtfEJNhmGdAxzRyEY0oanCzurN_dLetwwQ"/>
+</div>
+</div>
+<div class="order-1 md:order-2 flex justify-center">
+<div class="relative group">
+<div class="absolute inset-0 bg-red-600/10 blur-3xl rounded-full scale-125"></div>
+<img alt="Coca-Cola Glass" class="relative z-10 w-full max-w-md grayscale hover:grayscale-0 transition-all duration-1000 transform hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZGXyoc_na38zJ-tTO7Mv6zluq9qEIV9lz3ng1sL0Z4EF1GtoYobwtWWfzCFB79T-S967y58fWpqEQMfn7_cyL-iYS5aAb0PXBhc8d8Acc4uoaPGa3dTwiGndsKE6gsWf9s6AWIMUOBy802gfHU8PNDXSqsRfppA6Kbbz7fsaQaPioLYZ5coTfuzQWXQi7wnDoQhb7kidFLB4KEUc54u63H5MKdKDv2MR2WkhEDkN5vO7QN1Lq0abZhh9Zbek9YIIoSsacSMoRuw"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Tech Specs -->
+<section class="py-section-gap px-edge-margin-desktop bg-surface-container-lowest/30 section-reveal" id="purity">
+<div class="max-w-container-max mx-auto">
+<div class="grid grid-cols-12 gap-4 auto-rows-[200px]">
+<div class="col-span-12 md:col-span-8 glass-panel refraction-glass p-10 flex flex-col justify-end">
+<div class="font-data-mono text-primary text-ui-label mb-2 uppercase">Molecular Composition</div>
+<div class="font-display-hero text-headline-lg text-on-surface">CARBONATED PURITY</div>
+</div>
+<div class="col-span-12 md:col-span-4 glass-panel refraction-glass p-10 flex items-center justify-center border-primary/40 bg-primary/5">
+<span class="material-symbols-outlined text-[80px] text-primary animate-pulse">experiment</span>
+</div>
+<div class="col-span-12 md:col-span-4 glass-panel refraction-glass p-10 flex flex-col justify-center">
+<div class="font-data-mono text-primary text-ui-label mb-2">THERMAL_STATE</div>
+<div class="h-1 bg-outline-variant w-full mb-4">
+<div class="h-full bg-primary w-2/3 shadow-[0_0_8px_#ff0000]"></div>
+</div>
+<div class="text-on-surface font-body-main text-sm">OPTIMAL CHILL REACHED</div>
+</div>
+<div class="col-span-12 md:col-span-8 glass-panel overflow-hidden relative refraction-glass">
+<img class="absolute inset-0 w-full h-full object-cover opacity-30 hover:scale-110 transition-transform duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvjdF-x2_VZH0HBSZE7io_ZhWc3DKeLhGDzpIfVlxvKlCfu2YqPI9PA2TS2V6_NafiyU-iAerqiP1qvUjGuejpCuYmFPymvAcmlvm1d4dQ7Pcn79j56hv61bVv9OHQU6L1HroZWBAwHLG2RzuJWtU6NCbNB-O06Rb63hYRiPlWwDcTmij_GLU1Ohbm6z91IR1Vrz5_nK-pVtM7dttWc2tjsdOM0gDcSfb_HIrY4KY_V4xwNwURt7DnllDYSVsE4O66MLl6iPOx4w"/>
+<div class="absolute inset-0 p-10 flex flex-col justify-between z-10">
+<div class="font-data-mono text-primary">AERATION_PHASE_04</div>
+<div class="font-display-hero text-headline-sm text-on-surface">EFFERVESCENT WAVEFORMS</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="relative pb-24 pt-40 px-edge-margin-desktop bg-gradient-to-t from-background to-transparent pointer-events-none">
+<div class="flex flex-col md:flex-row justify-between items-end gap-12 pointer-events-auto">
+<div>
+<div class="font-display-hero text-headline-sm text-on-surface mb-4">AETHER VOID</div>
+<div class="font-ui-label text-ui-label text-on-tertiary-fixed-variant max-w-xs">
+                        ©2024 NEON_LIQUID_LABS. ALL RIGHTS RESERVED. <br/>DESIGNED FOR THE DIGITAL VANGUARD.
+                    </div>
+</div>
+<div class="flex gap-12">
+<div class="flex flex-col gap-2">
+<span class="font-data-mono text-[10px] text-primary">LEGAL</span>
+<a class="font-ui-label text-ui-label text-on-tertiary-fixed-variant hover:text-primary transition-colors" href="#">PRIVACY</a>
+<a class="font-ui-label text-ui-label text-on-tertiary-fixed-variant hover:text-primary transition-colors" href="#">ENCRYPTION</a>
+<a class="font-ui-label text-ui-label text-on-tertiary-fixed-variant hover:text-primary transition-colors" href="#">PROTOCOL</a>
+</div>
+<div class="flex flex-col gap-2">
+<span class="font-data-mono text-[10px] text-primary">SOCIAL</span>
+<a class="font-ui-label text-ui-label text-on-tertiary-fixed-variant hover:text-primary transition-colors" href="#">NEURAL_LINK</a>
+<a class="font-ui-label text-ui-label text-on-tertiary-fixed-variant hover:text-primary transition-colors" href="#">GRID_FEED</a>
+</div>
+</div>
+</div>
+</footer>
+</main>
+<script>
+        // Particle & Bubble System
+        const particleContainer = document.getElementById('particle-container');
+        const bubbleContainer = document.getElementById('bubble-container');
+        
+        function initBackgroundEffects() {
+            // Crimson Particles
+            for (let i = 0; i < 60; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                const size = Math.random() * 2 + 1;
+                p.style.width = `${size}px`;
+                p.style.height = `${size}px`;
+                p.style.left = `${Math.random() * 100}%`;
+                p.style.top = `${Math.random() * 100}%`;
+                p.style.opacity = Math.random() * 0.4;
+                p.style.boxShadow = `0 0 ${Math.random() * 12}px #ff0000`;
+                particleContainer.appendChild(p);
+                animateParticle(p);
+            }
+
+            // Carbonation Bubbles
+            for (let i = 0; i < 25; i++) {
+                createBubble();
+            }
+        }
+
+        function createBubble() {
+            const b = document.createElement('div');
+            b.className = 'bubble';
+            const size = Math.random() * 6 + 2;
+            b.style.width = `${size}px`;
+            b.style.height = `${size}px`;
+            b.style.left = `${Math.random() * 100}%`;
+            bubbleContainer.appendChild(b);
+            
+            const duration = Math.random() * 15000 + 10000;
+            const xMovement = (Math.random() - 0.5) * 100;
+            
+            b.animate([
+                { transform: `translateY(0) translateX(0)`, opacity: 0 },
+                { opacity: 0.6, offset: 0.1 },
+                { opacity: 0.3, offset: 0.8 },
+                { transform: `translateY(-120vh) translateX(${xMovement}px)`, opacity: 0 }
+            ], {
+                duration: duration,
+                iterations: Infinity,
+                easing: 'linear',
+                delay: Math.random() * 10000
+            });
+        }
+
+        function animateParticle(p) {
+            const duration = Math.random() * 4000 + 3000;
+            const xDist = (Math.random() - 0.5) * 300;
+            const yDist = (Math.random() - 0.5) * 300;
+
+            p.animate([
+                { transform: 'translate(0, 0)', opacity: 0 },
+                { opacity: 0.8, offset: 0.5 },
+                { transform: `translate(${xDist}px, ${yDist}px)`, opacity: 0 }
+            ], {
+                duration: duration,
+                iterations: Infinity,
+                easing: 'ease-in-out'
+            });
+        }
+
+        // 3D Orbiting Camera Effect
+        const cameraRig = document.getElementById('camera-rig');
+        const heroCan = document.getElementById('hero-can');
+        let mouseX = 0, mouseY = 0;
+        let currentX = 0, currentY = 0;
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX / window.innerWidth - 0.5) * 30;
+            mouseY = (e.clientY / window.innerHeight - 0.5) * 30;
+        });
+
+        function updateCamera() {
+            currentX += (mouseX - currentX) * 0.05;
+            currentY += (mouseY - currentY) * 0.05;
+            
+            // Apply subtle orbital rotation to the rig
+            heroCan.style.transform = `rotateY(${currentX}deg) rotateX(${-currentY}deg)`;
+            
+            // Responsive lighting based on orbit
+            heroCan.style.filter = `drop-shadow(${-currentX/2}px ${currentY/2}px 30px rgba(220, 20, 60, 0.5))`;
+            
+            requestAnimationFrame(updateCamera);
+        }
+
+        // Section Reveal Intersection Observer
+        const observerOptions = {
+            threshold: 0.15
+        };
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section-reveal').forEach(section => {
+            revealObserver.observe(section);
+        });
+
+        // Scroll Bar Indicator
+        window.addEventListener('scroll', () => {
+            const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            document.getElementById('scroll-bar').style.top = `${scrollPercent}%`;
+        });
+
+        // Initialize
+        initBackgroundEffects();
+        updateCamera();
+    </script>
+</body></html>

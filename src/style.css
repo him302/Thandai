@@ -1,0 +1,221 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: #050505; /* Matte black luxury interface */
+  overflow: hidden; /* Hub container has no scroll */
+}
+
+/* =========================================
+   CINEMATIC LOADING SCREEN
+========================================= */
+#loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #050505;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 1.5s cubic-bezier(0.25, 1, 0.5, 1), visibility 1.5s;
+}
+
+.loading-bg-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50vw;
+  height: 50vw;
+  background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+  filter: blur(40px);
+  z-index: 1;
+  animation: pulse-glow 3s infinite alternate;
+}
+
+.loader-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  width: 80%;
+  max-width: 600px;
+}
+
+.glitch {
+  color: white;
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: 10px;
+  text-transform: uppercase;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 30px;
+  text-shadow: 0 0 20px rgba(255,255,255,0.3);
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.progress-bar {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #e50024, #ff8800, #00cc33, #005ce6);
+  background-size: 200% 100%;
+  animation: gradientShift 2s linear infinite;
+  box-shadow: 0 0 15px rgba(255,255,255,0.5);
+  transition: width 0.1s ease-out;
+}
+
+.loading-status {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.9rem;
+  margin-top: 20px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  animation: blink 1.5s infinite;
+}
+
+@keyframes pulse-glow {
+  0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.5; }
+  100% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+#multiverse-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+}
+
+.universe-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  border: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.universe-frame.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* The WebGL Canvas Overlay for Transitions */
+#transition-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  pointer-events: none; /* Let clicks pass to the iframe unless transitioning */
+}
+
+/* Global Floating Navigation Portal UI */
+#portal-nav {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  background: rgba(10, 10, 10, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  padding: 10px 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-ring {
+  display: flex;
+  gap: 15px;
+}
+
+.nav-btn {
+  background: transparent;
+  color: #fff;
+  border: none;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 10px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  opacity: 0.6;
+}
+
+.nav-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.nav-btn.active {
+  opacity: 1;
+  font-weight: 700;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+/* Brand specific glow effects on hover/active */
+.nav-btn.cola.active, .nav-btn.cola:hover {
+  background: rgba(229, 0, 36, 0.15);
+  border: 1px solid rgba(229, 0, 36, 0.5);
+  text-shadow: 0 0 8px rgba(229, 0, 36, 0.8);
+  box-shadow: 0 0 20px rgba(229, 0, 36, 0.4);
+}
+
+.nav-btn.sprite.active, .nav-btn.sprite:hover {
+  background: rgba(0, 204, 51, 0.15);
+  border: 1px solid rgba(0, 204, 51, 0.5);
+  text-shadow: 0 0 8px rgba(0, 204, 51, 0.8);
+  box-shadow: 0 0 20px rgba(0, 204, 51, 0.4);
+}
+
+.nav-btn.pepsi.active, .nav-btn.pepsi:hover {
+  background: rgba(0, 92, 230, 0.15);
+  border: 1px solid rgba(0, 92, 230, 0.5);
+  text-shadow: 0 0 8px rgba(0, 92, 230, 0.8);
+  box-shadow: 0 0 20px rgba(0, 92, 230, 0.4);
+}
+
+.nav-btn.fanta.active, .nav-btn.fanta:hover {
+  background: rgba(255, 136, 0, 0.15);
+  border: 1px solid rgba(255, 136, 0, 0.5);
+  text-shadow: 0 0 8px rgba(255, 136, 0, 0.8);
+  box-shadow: 0 0 20px rgba(255, 136, 0, 0.4);
+}

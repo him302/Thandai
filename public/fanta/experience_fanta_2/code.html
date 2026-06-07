@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AETHER VOID | FANTA EXPERIENCE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;0,900;1,400&amp;family=Plus+Jakarta+Sans:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#1a1c1c",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#1d1b19",
+                        "on-primary-container": "#7a797a",
+                        "secondary-fixed": "#e2e2e2",
+                        "on-primary-fixed": "#1c1b1c",
+                        "surface-bright": "#3a3939",
+                        "on-tertiary-container": "#7c7975",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-secondary-container": "#b4b5b5",
+                        "surface-dim": "#141313",
+                        "on-secondary-fixed-variant": "#454747",
+                        "primary-container": "#0a0a0b",
+                        "on-error": "#690005",
+                        "on-primary-fixed-variant": "#474647",
+                        "surface-container-high": "#2b2a2a",
+                        "inverse-on-surface": "#313030",
+                        "secondary-fixed-dim": "#c6c6c7",
+                        "surface-container-highest": "#353434",
+                        "secondary-container": "#454747",
+                        "tertiary": "#cac6c2",
+                        "primary": "#c8c6c7",
+                        "on-primary": "#313031",
+                        "inverse-primary": "#5f5e5f",
+                        "inverse-surface": "#e5e2e1",
+                        "background": "#141313",
+                        "on-surface": "#e5e2e1",
+                        "surface-container": "#201f1f",
+                        "on-tertiary-fixed-variant": "#494643",
+                        "on-tertiary": "#32302d",
+                        "error": "#ffb4ab",
+                        "primary-fixed-dim": "#c8c6c7",
+                        "on-background": "#e5e2e1",
+                        "surface-container-low": "#1c1b1b",
+                        "on-surface-variant": "#c7c6ca",
+                        "tertiary-fixed": "#e7e2dd",
+                        "outline-variant": "#46464a",
+                        "on-secondary": "#2f3131",
+                        "error-container": "#93000a",
+                        "outline": "#919094",
+                        "tertiary-container": "#0b0a08",
+                        "surface-tint": "#c8c6c7",
+                        "surface": "#141313",
+                        "primary-fixed": "#e5e2e3",
+                        "surface-variant": "#353434",
+                        "tertiary-fixed-dim": "#cac6c2",
+                        "secondary": "#c6c6c7",
+                        "fanta-orange": "#FF8200",
+                        "fanta-sunset": "#FF4E00"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap": "160px",
+                        "edge-margin-mobile": "24px",
+                        "container-max": "1440px",
+                        "edge-margin-desktop": "80px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "display-hero": ["Bodoni Moda"],
+                        "ui-label": ["JetBrains Mono"],
+                        "headline-lg": ["Bodoni Moda"],
+                        "headline-sm": ["Plus Jakarta Sans"],
+                        "body-main": ["Plus Jakarta Sans"],
+                        "data-mono": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "display-hero": ["120px", {"lineHeight": "110%", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "ui-label": ["10px", {"lineHeight": "100%", "letterSpacing": "0.1em", "fontWeight": "500"}],
+                        "headline-lg": ["48px", {"lineHeight": "120%", "fontWeight": "400"}],
+                        "headline-sm": ["20px", {"lineHeight": "140%", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-main": ["16px", {"lineHeight": "160%", "fontWeight": "400"}],
+                        "data-mono": ["12px", {"lineHeight": "150%", "letterSpacing": "0.2em", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #141313;
+            color: #e5e2e1;
+            overflow-x: hidden;
+            cursor: crosshair;
+        }
+        .void-gradient {
+            background: radial-gradient(circle at center, #1a1a1a 0%, #0e0e0e 100%);
+        }
+        .fanta-glow {
+            filter: drop-shadow(0 0 30px rgba(255, 130, 0, 0.4));
+        }
+        .glass-panel {
+            backdrop-filter: blur(30px);
+            background: rgba(255, 255, 255, 0.05);
+            border: 0.5px solid rgba(198, 198, 199, 0.2);
+        }
+        .liquid-bg {
+            background: linear-gradient(45deg, #FF820033, #FF4E0011, #14131300);
+            filter: blur(80px);
+            z-index: -1;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        .leader-line {
+            height: 1px;
+            background: rgba(255, 130, 0, 0.5);
+            transform-origin: left center;
+        }
+        .vertical-scrubber {
+            width: 1px;
+            height: 200px;
+            background: linear-gradient(to bottom, transparent, #FF8200, transparent);
+        }
+        /* New Animated Effects */
+        .sunset-volumetric {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            mix-blend-mode: screen;
+            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 130, 0, 0.15) 0%, transparent 60%);
+            transition: background 0.3s ease-out;
+        }
+        .vibrant-distortion-divider {
+            height: 300px;
+            background: linear-gradient(to bottom, #141313, transparent, #141313);
+            position: relative;
+            overflow: hidden;
+        }
+        .vibrant-distortion-divider::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(0deg, transparent, rgba(255, 130, 0, 0.1) 2px, transparent 4px);
+            animation: distortion-scan 4s linear infinite;
+        }
+        @keyframes distortion-scan {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(100%); }
+        }
+        .rotate-3d-slow {
+            animation: rotate3d 20s linear infinite;
+            transform-style: preserve-3d;
+        }
+        @keyframes rotate3d {
+            0% { transform: rotateY(0deg) rotateX(0deg); }
+            100% { transform: rotateY(360deg) rotateX(20deg); }
+        }
+        .bubble {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: bubble-float linear infinite;
+        }
+        @keyframes bubble-float {
+            0% { transform: translateY(110vh) scale(1); opacity: 0; }
+            20% { opacity: 0.5; }
+            80% { opacity: 0.5; }
+            100% { transform: translateY(-20vh) scale(1.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body class="font-body-main selection:bg-fanta-orange selection:text-white">
+<div class="sunset-volumetric" id="sunset-glow"></div>
+<!-- TopNavBar Shell -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-edge-margin-desktop py-unit backdrop-blur-xl bg-surface/5 border-b-[0.5px] border-secondary/20">
+<div class="font-display-hero text-headline-sm tracking-tighter text-on-surface">AETHER VOID</div>
+<div class="hidden md:flex gap-10">
+<a class="font-ui-label text-ui-label text-on-surface-variant/60 hover:text-primary hover:tracking-widest transition-all duration-500" href="#">STORY</a>
+<a class="font-ui-label text-ui-label text-primary border-b border-primary pb-1 hover:tracking-widest transition-all duration-500" href="#">ESSENCE</a>
+<a class="font-ui-label text-ui-label text-on-surface-variant/60 hover:text-primary hover:tracking-widest transition-all duration-500" href="#">ARCHIVE</a>
+<a class="font-ui-label text-ui-label text-on-surface-variant/60 hover:text-primary hover:tracking-widest transition-all duration-500" href="#">COLLECT</a>
+</div>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-primary hover:scale-110 transition-transform cursor-pointer">shopping_bag</span>
+<span class="material-symbols-outlined text-primary hover:scale-110 transition-transform cursor-pointer">menu</span>
+</div>
+</nav>
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-full flex flex-col justify-between py-10 z-40 backdrop-blur-3xl bg-surface-container-lowest/10 border-r-[0.5px] border-outline-variant/30 w-20">
+<div class="flex flex-col items-center gap-8 pt-20">
+<div class="flex flex-col items-center gap-2 group cursor-pointer">
+<span class="material-symbols-outlined text-primary drop-shadow-[0_0_8px_rgba(200,198,199,0.8)]">blur_on</span>
+<span class="font-data-mono text-[8px] tracking-[0.2em] text-primary opacity-0 group-hover:opacity-100 transition-opacity">VISUALIZER</span>
+</div>
+<div class="flex flex-col items-center gap-2 group cursor-pointer">
+<span class="material-symbols-outlined text-on-secondary-fixed-variant hover:text-primary transition-colors">waves</span>
+<span class="font-data-mono text-[8px] tracking-[0.2em] text-primary opacity-0 group-hover:opacity-100 transition-opacity">SPECTROMETER</span>
+</div>
+<div class="flex flex-col items-center gap-2 group cursor-pointer">
+<span class="material-symbols-outlined text-on-secondary-fixed-variant hover:text-primary transition-colors">science</span>
+<span class="font-data-mono text-[8px] tracking-[0.2em] text-primary opacity-0 group-hover:opacity-100 transition-opacity">MOLECULAR</span>
+</div>
+<div class="flex flex-col items-center gap-2 group cursor-pointer">
+<span class="material-symbols-outlined text-on-secondary-fixed-variant hover:text-primary transition-colors">opacity</span>
+<span class="font-data-mono text-[8px] tracking-[0.2em] text-primary opacity-0 group-hover:opacity-100 transition-opacity">DISTILLERY</span>
+</div>
+</div>
+<div class="flex flex-col items-center gap-6 pb-4">
+<span class="material-symbols-outlined text-on-secondary-fixed-variant hover:text-primary cursor-pointer">settings</span>
+<div class="w-8 h-8 rounded-full border border-primary/20 bg-primary/10 flex items-center justify-center overflow-hidden">
+<img alt="operator" class="w-full h-full object-cover grayscale brightness-125" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRH9A9ACK2iPd-YQ70iyPzCmcUEPDLT2Id7uFx0yvsr6lVt8vbXg0-t87_bwOAQ8e6QflHREPBAINUh0aUmELSqTX77mQnRtlhQV3yK2VA2zEQRPOwjBUFPK3NkewHtH3S6Vg0INsE-m-IjR4JFYrGDZ7MdLSHK3g1E6RUuPwgndV3gRZU9Vh5jKe2ZTD4vsJ6E3IonEDHBgKKyeZe_BtbukFwxIsG2-20wgSvF70qlz4py0hUlhVWqUM43NgOrC_70HEw8Xw4JQ"/>
+</div>
+</div>
+</aside>
+<!-- Main Scrollable Canvas -->
+<main class="ml-20">
+<!-- Hero Section -->
+<section class="relative h-screen flex items-center justify-center overflow-hidden void-gradient">
+<div class="liquid-bg absolute inset-0 w-full h-full animate-pulse"></div>
+<!-- Atmospheric Particles Container -->
+<div class="absolute inset-0 pointer-events-none" id="particles"></div>
+<div class="absolute inset-0 pointer-events-none overflow-hidden" id="bubbles-container"></div>
+<div class="container mx-auto px-edge-margin-desktop grid grid-cols-12 relative z-10">
+<div class="col-span-12 md:col-span-5 flex flex-col justify-center">
+<span class="font-data-mono text-data-mono text-fanta-orange mb-4 tracking-[0.4em]">PROJECT_ORANGE_VOID</span>
+<h1 class="font-display-hero text-display-hero leading-[0.9] mb-8">
+                    VIBRANT<br/>
+<span class="text-fanta-orange italic">DISTORTION</span>
+</h1>
+<p class="font-body-main text-on-surface-variant max-w-sm mb-12 opacity-80">
+                    An immersive sensory installation redefining the architecture of flavor. Experience the molecular expansion of citrus in a cinematic void.
+                </p>
+<div class="flex gap-6">
+<button class="px-10 py-4 bg-white text-black font-ui-label text-ui-label hover:shadow-[0_0_30px_rgba(255,130,0,0.6)] transition-all uppercase tracking-[0.2em]">ENTER_VOID</button>
+<button class="px-10 py-4 border border-outline/30 font-ui-label text-ui-label hover:bg-white/5 transition-all uppercase tracking-[0.2em]">VIEW_MANIFESTO</button>
+</div>
+</div>
+<!-- Product Focus -->
+<div class="col-span-12 md:col-span-7 flex justify-center items-center relative">
+<div class="relative animate-float">
+<img alt="Fanta Bottle" class="w-[450px] fanta-glow relative z-20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXn74lmB9ThkAP2BdjzCU9QoGEKVOXQd3eg9xEm2cqUh3kRd8BtNoxnW-8y25v0Ihg1hgV_XnyX79SGC4VmAYxI40oo76mpPGbi0mBeBG6xLl9GIFOKuEnN6bSh5mTbfO0YlxrzO3Oa2hgHAaYx9s7LfnNdMo1f72TMF-Q_wb9lxpt8Rxx0p74Sesc59rOgvizlqEmQjLKaJUw2yU9WL1jq88fZR3Y_XgX1Vabkmpf274LFDtYr3-ZVlO0HqZ1VPU5ZLTHG_6xMw"/>
+<!-- Leader Lines -->
+<div class="absolute -right-20 top-1/4 flex items-center group">
+<div class="leader-line w-24"></div>
+<div class="ml-4 glass-panel p-4">
+<span class="font-data-mono text-[10px] text-fanta-orange block mb-1">01_CORE</span>
+<span class="font-ui-label text-[12px]">CARBONATED_PULSE</span>
+</div>
+</div>
+<div class="absolute -left-32 bottom-1/3 flex items-center group">
+<div class="glass-panel p-4 text-right">
+<span class="font-data-mono text-[10px] text-fanta-orange block mb-1">02_ZEST</span>
+<span class="font-ui-label text-[12px]">CITRUS_HARMONY</span>
+</div>
+<div class="leader-line w-32 ml-4"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Scroll Indicator -->
+<div class="absolute right-edge-margin-desktop bottom-1/4 flex flex-col items-center gap-4">
+<span class="font-data-mono text-[10px] vertical-text transform rotate-90 mb-20 text-on-surface-variant/40">SCROLL_SYSTEM</span>
+<div class="vertical-scrubber"></div>
+</div>
+</section>
+<!-- Transition Section -->
+<div class="vibrant-distortion-divider"></div>
+<!-- CITRUS HARMONY Section -->
+<section class="py-section-gap px-edge-margin-desktop container mx-auto">
+<div class="grid grid-cols-12 gap-10 items-end mb-24">
+<div class="col-span-12 md:col-span-7">
+<h2 class="font-headline-lg text-headline-lg mb-8 leading-tight">
+<span class="text-fanta-orange">CITRUS HARMONY</span><br/>
+                    A SYMPHONY OF MOLECULAR RADIANCE
+                </h2>
+</div>
+<div class="col-span-12 md:col-span-5 pb-4">
+<p class="font-body-main text-on-surface-variant border-l border-fanta-orange pl-8 py-2">
+                    Utilizing cold-press extraction within a vacuum environment to preserve the volatile aromatic compounds of hand-selected Mediterranean citrus.
+                </p>
+</div>
+</div>
+<!-- Bento Grid of Features -->
+<div class="grid grid-cols-12 gap-6 h-[700px]">
+<div class="col-span-8 glass-panel relative overflow-hidden group perspective-1000">
+<img alt="Orange Macro" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0 rotate-3d-slow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaeJ1CIKf2oJhF-XLwa3-aiRnkmQIrsIZVlronCZWqET7YKh7pdjqdZ0hMXOzneBGkgmCt765q5TWA0D6QwuC0W7w_6VqMvbJZXgz960QAo48ZN-IVfusWZS4Bk1_Ep9xiEwKLaTBam2extSrI6_Y3e9t7_wvCEvspJL8u5VJPAdsnIJL5GAyx2HviWf-9XNlA-f3-JBg3Y8GniL0p8Sog-BbLXycbi0ZYPnY4aD7AvzRU8iJd_31W2XNUY33DULmu7-8Jekw3sw"/>
+<div class="absolute bottom-10 left-10 z-10">
+<div class="px-4 py-2 bg-fanta-orange text-black font-data-mono text-[10px] mb-4 w-fit">EXTRACTION_01</div>
+<h3 class="font-headline-sm text-headline-sm text-white">THE PULP INTERFACE</h3>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+</div>
+<div class="col-span-4 flex flex-col gap-6">
+<div class="h-1/2 glass-panel p-10 flex flex-col justify-between hover:bg-fanta-orange/5 transition-colors group">
+<span class="material-symbols-outlined text-fanta-orange text-4xl group-hover:rotate-45 transition-transform">flare</span>
+<div>
+<span class="font-data-mono text-[10px] text-fanta-orange block mb-2">SPECTRUM_ANALYSIS</span>
+<p class="font-ui-label text-sm leading-relaxed text-on-surface-variant">The radiant spectrum of sunset orange, measured at precisely 605 nanometers for optimal visual dopamine response.</p>
+</div>
+</div>
+<div class="h-1/2 bg-surface-container p-1 relative overflow-hidden">
+<div class="w-full h-full border-[0.5px] border-outline/20 p-8 flex flex-col justify-end">
+<span class="material-symbols-outlined text-fanta-orange text-4xl mb-4">ac_unit</span>
+<h4 class="font-headline-sm text-[16px] mb-2">CRYOGENIC_CHILL</h4>
+<p class="font-data-mono text-[10px] text-on-surface-variant">Optimal serving temperature stabilized at 3.4°C.</p>
+</div>
+<div class="absolute top-0 right-0 p-4 font-data-mono text-[8px] text-fanta-orange opacity-20">SYSTEM_STABLE_0029</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Dynamic Product Detail -->
+<section class="min-h-screen bg-surface-container-lowest flex items-center relative py-section-gap">
+<div class="absolute top-0 right-0 w-1/2 h-full bg-fanta-orange/5 blur-[120px]"></div>
+<div class="container mx-auto px-edge-margin-desktop grid grid-cols-12 items-center relative z-10">
+<div class="col-span-12 md:col-span-6 order-2 md:order-1">
+<div class="relative w-full aspect-square max-w-lg mx-auto">
+<!-- Floating Glass Chips -->
+<div class="absolute top-0 right-0 glass-panel p-6 animate-float" style="animation-delay: -1s">
+<span class="material-symbols-outlined text-fanta-orange">water_drop</span>
+</div>
+<div class="absolute bottom-10 left-0 glass-panel p-8 animate-float" style="animation-delay: -3s">
+<span class="material-symbols-outlined text-fanta-orange">bubble_chart</span>
+</div>
+<img alt="Frosted Glass" class="w-full h-full object-cover rounded-full border-[0.5px] border-fanta-orange/30 p-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMEwiGfNM6VTw10YoQVEoPwCfzpg2WLte-FneeDSvhbEgqCsxq0177oNrmSQjiUbAkEmgjx_DvibamiNXMGMc0bL_5c7wF1tMC0cUUY500iMmTHNyUhQJPhd7eRogS3i-puY0MlcwpjZPE4mmpwbsAF1A2rr66efeO8n60xu2cUB4egnPj9sY1gNtZMWTDiiGsb-_smjkrr6BDMjRtXK0sCY8ygk31badRONtGTSasMM_CXzwf3NogMWItDJwDXqLPzW57i17Qeg"/>
+</div>
+</div>
+<div class="col-span-12 md:col-span-6 order-1 md:order-2 pl-0 md:pl-20">
+<span class="font-data-mono text-fanta-orange mb-4 tracking-[0.4em] block">PROTOCOL_ESTABLISHED</span>
+<h2 class="font-display-hero text-headline-lg mb-10">THE SUNSET<br/>MANIFESTO</h2>
+<div class="space-y-8">
+<div class="group cursor-default">
+<div class="flex justify-between items-end mb-2">
+<span class="font-headline-sm text-sm">CARBONATION_LEVEL</span>
+<span class="font-data-mono text-fanta-orange">84%</span>
+</div>
+<div class="h-[1px] w-full bg-outline-variant/30">
+<div class="h-full bg-fanta-orange w-[84%] transition-all duration-1000 group-hover:w-full"></div>
+</div>
+</div>
+<div class="group cursor-default">
+<div class="flex justify-between items-end mb-2">
+<span class="font-headline-sm text-sm">CITRUS_DENSITY</span>
+<span class="font-data-mono text-fanta-orange">92%</span>
+</div>
+<div class="h-[1px] w-full bg-outline-variant/30">
+<div class="h-full bg-fanta-orange w-[92%] transition-all duration-1000 group-hover:w-full"></div>
+</div>
+</div>
+<div class="group cursor-default">
+<div class="flex justify-between items-end mb-2">
+<span class="font-headline-sm text-sm">REFRESHMENT_INDEX</span>
+<span class="font-data-mono text-fanta-orange">100%</span>
+</div>
+<div class="h-[1px] w-full bg-outline-variant/30">
+<div class="h-full bg-fanta-orange w-full transition-all duration-1000 shadow-[0_0_10px_#FF8200]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Shell -->
+<footer class="fixed bottom-0 left-0 w-full flex justify-between items-center px-edge-margin-desktop py-4 z-50 pointer-events-none">
+<div class="pointer-events-auto flex items-center gap-8">
+<span class="font-ui-label text-ui-label text-on-tertiary-fixed-variant">©2024 NEON_LIQUID_LABS. ALL RIGHTS RESERVED.</span>
+</div>
+<div class="pointer-events-auto flex gap-10">
+<a class="font-ui-label text-ui-label text-on-tertiary-fixed-variant hover:text-primary transition-colors" href="#">PRIVACY</a>
+<a class="font-ui-label text-ui-label text-on-tertiary-fixed-variant hover:text-primary transition-colors" href="#">ENCRYPTION</a>
+<a class="font-ui-label text-ui-label text-on-tertiary-fixed-variant hover:text-primary transition-colors" href="#">PROTOCOL</a>
+</div>
+</footer>
+<script>
+    // Sunset Glow & Mouse Tracking
+    const sunsetGlow = document.getElementById('sunset-glow');
+    document.addEventListener('mousemove', (e) => {
+        const x = (e.clientX / window.innerWidth) * 100;
+        const y = (e.clientY / window.innerHeight) * 100;
+        
+        document.documentElement.style.setProperty('--mouse-x', `${x}%`);
+        document.documentElement.style.setProperty('--mouse-y', `${y}%`);
+
+        // Parallax for floating elements
+        const layers = document.querySelectorAll('.animate-float');
+        const px = (window.innerWidth - e.pageX * 2) / 100;
+        const py = (window.innerHeight - e.pageY * 2) / 100;
+
+        layers.forEach(layer => {
+            layer.style.transform = `translateX(${px}px) translateY(${py}px)`;
+        });
+
+        // Color shift based on mouse position
+        const hue = 20 + (x / 100) * 20; // Shift between orange and deeper red
+        sunsetGlow.style.background = `radial-gradient(circle at ${x}% ${y}%, hsla(${hue}, 100%, 50%, 0.15) 0%, transparent 60%)`;
+    });
+
+    // Bubble Generation
+    const bubbleContainer = document.getElementById('bubbles-container');
+    function createBubble() {
+        const bubble = document.createElement('div');
+        const size = Math.random() * 10 + 5;
+        const left = Math.random() * 100;
+        const duration = Math.random() * 8 + 7;
+        
+        bubble.className = 'bubble';
+        bubble.style.width = `${size}px`;
+        bubble.style.height = `${size}px`;
+        bubble.style.left = `${left}%`;
+        bubble.style.animationDuration = `${duration}s`;
+        bubble.style.bottom = `-50px`;
+        
+        bubbleContainer.appendChild(bubble);
+        
+        setTimeout(() => {
+            bubble.remove();
+        }, duration * 1000);
+    }
+    setInterval(createBubble, 500);
+
+    // Atmospheric Particle Generation
+    const particleContainer = document.getElementById('particles');
+    for (let i = 0; i < 60; i++) {
+        const particle = document.createElement('div');
+        particle.style.position = 'absolute';
+        particle.style.width = Math.random() * 3 + 'px';
+        particle.style.height = particle.style.width;
+        particle.style.backgroundColor = '#FF8200';
+        particle.style.borderRadius = '50%';
+        particle.style.top = Math.random() * 100 + '%';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.opacity = Math.random() * 0.5;
+        particle.style.filter = 'blur(1px)';
+        
+        const duration = Math.random() * 10 + 10;
+        particle.animate([
+            { transform: 'translateY(0) scale(1)', opacity: 0 },
+            { transform: 'translateY(-100vh) scale(1.5)', opacity: 0.5 },
+            { transform: 'translateY(-200vh) scale(1)', opacity: 0 }
+        ], {
+            duration: duration * 1000,
+            iterations: Infinity,
+            delay: Math.random() * 5000
+        });
+        
+        particleContainer.appendChild(particle);
+    }
+
+    // Section Reveal Observers
+    const observerOptions = {
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('opacity-100');
+                entry.target.classList.remove('opacity-0', 'translate-y-10');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('section').forEach(section => {
+        section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
+        observer.observe(section);
+    });
+</script>
+</body></html>

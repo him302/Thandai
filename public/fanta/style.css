@@ -1,0 +1,267 @@
+
+        body {
+            margin: 0;
+            background-color: #0a0500; /* Very dark orange/black */
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        #hero-section {
+            position: relative;
+            height: 500vh; /* 5 screen heights for a long, smooth scroll */
+            background: radial-gradient(circle at center, #ff8200 0%, #d84300 40%, #0a0500 100%);
+        }
+
+        .sticky-container {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        canvas {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 10;
+            /* In case the JPGs have a solid black background, screen mode makes it blend beautifully with the orange gradient. If they have their own background, normal mode will just show the images. I will set a blend mode that usually works well for product sequences on dark backgrounds. */
+            mix-blend-mode: normal; 
+        }
+
+        .overlay-text {
+            position: absolute;
+            z-index: 20;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            pointer-events: none;
+        }
+
+        #overlay-text h1 {
+            font-size: 13vw !important;
+            font-weight: 700;
+            text-transform: uppercase;
+            line-height: 1;
+            margin: 0;
+            color: #ffffff;
+            text-shadow: 0 0 60px rgba(255, 130, 0, 0.8), 0 0 20px rgba(255, 255, 255, 0.4);
+            letter-spacing: -2px;
+        }
+
+        #overlay-text p {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 400;
+            margin-top: 15px;
+            color: #d35400; /* Dark orange */
+            text-shadow: 0 0 30px rgba(255, 130, 0, 0.8);
+            letter-spacing: 2px;
+        }
+
+        /* Premium glow effect behind the bottle */
+        .glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, rgba(255, 130, 0, 0.6) 0%, rgba(255, 78, 0, 0.3) 40%, transparent 70%);
+            filter: blur(60px);
+            z-index: 5;
+            mix-blend-mode: screen;
+            animation: pulse-glow 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulse-glow {
+            0% { opacity: 0.6; transform: translate(-50%, -50%) scale(0.9); }
+            100% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        /* Particles effect for premium feel */
+        .particles-container {
+            position: absolute;
+            inset: 0;
+            z-index: 8;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            filter: blur(2px);
+            animation: float-up linear infinite;
+        }
+
+        @keyframes float-up {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            20% { opacity: 1; transform: translateY(80vh) scale(1); }
+            80% { opacity: 1; transform: translateY(20vh) scale(1); }
+            100% { transform: translateY(-20vh) scale(0); opacity: 0; }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 30;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0.6;
+        }
+
+        .scroll-text {
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, #fff, transparent);
+            animation: scroll-line-anim 2s infinite;
+        }
+
+        @keyframes scroll-line-anim {
+            0% { transform: scaleY(0); transform-origin: top; }
+            50% { transform: scaleY(1); transform-origin: top; }
+            50.1% { transform: scaleY(1); transform-origin: bottom; }
+            100% { transform: scaleY(0); transform-origin: bottom; }
+        }
+    
+        /* NEW STYLES FOR SECTIONS 1-9 */
+        :root {
+            --fanta-orange: #FF6A00;
+            --fanta-yellow: #FFC300;
+            --fanta-tangerine: #FF8C42;
+            --fanta-purple: #9D4EDD;
+            --fanta-black: #0D0D0D;
+        }
+
+        /* Glassmorphism */
+        .glass-panel {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .glass-card {
+            background: rgba(255, 106, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 106, 0, 0.2);
+            border-radius: 24px;
+        }
+
+        .text-glow {
+            text-shadow: 0 0 20px rgba(255, 106, 0, 0.6);
+        }
+
+        /* Product Showcase */
+        .horizontal-scroll-wrapper {
+            width: 400vw;
+            display: flex;
+            flex-wrap: nowrap;
+            height: 100vh;
+        }
+
+        .product-panel {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            perspective: 1000px;
+        }
+
+        .product-card {
+            width: 350px;
+            height: 500px;
+            transform-style: preserve-3d;
+            transition: transform 0.1s ease;
+        }
+
+        /* Flavor Universe */
+        .flavor-bg {
+            transition: background-color 1s ease;
+        }
+
+        .flavor-particle {
+            position: absolute;
+            pointer-events: none;
+            border-radius: 50%;
+            mix-blend-mode: screen;
+        }
+
+        /* Legacy Timeline */
+        .timeline-line {
+            width: 4px;
+            background: var(--fanta-orange);
+            box-shadow: 0 0 15px var(--fanta-orange);
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+            bottom: 0;
+            transform-origin: top;
+        }
+
+        .timeline-item {
+            width: 50%;
+            padding: 2rem 4rem;
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            text-align: left;
+        }
+
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border: 4px solid var(--fanta-orange);
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            box-shadow: 0 0 20px var(--fanta-orange);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -10px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -10px;
+        }
+        
+        /* Footer */
+        .footer-glow {
+            background: radial-gradient(circle at 50% 100%, rgba(255, 106, 0, 0.4) 0%, transparent 60%);
+        }
+
